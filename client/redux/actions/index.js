@@ -71,3 +71,37 @@ export function fetchUser(thisUser) {
     });
   };
 }
+
+//-----Filestack-----
+export const fetchProfileImage = uid => {
+  return dispatch => {
+    firebaseDb.ref('users/' + uid + '/images/').on('value', snapshot => {
+      const firebaseOutput = snapshot.val();
+
+      let pushList = [];
+      for (let prop in firebaseOutput) {
+        pushList.push(prop);
+      }
+
+      const uploadList = [];
+      for (let i = 0; i < pushList.length; i++) {
+        if (firebaseOutput[pushList[i]].profileImage) {
+          uploadList.push(firebaseOutput[pushList[i]]);
+        }
+      }
+
+      let lastUpload = uploadList[uploadList.length - 1];
+
+      if (lastUpload === undefined) {
+        dispatch({
+          type: actionTypes.NO_PROFILE_IMAGE
+        });
+      } else {
+        dispatch({
+          type: actionTypes.PROFILE_IMAGE,
+          payload: lastUpload.profileImage
+        });
+      }
+    });
+  };
+};

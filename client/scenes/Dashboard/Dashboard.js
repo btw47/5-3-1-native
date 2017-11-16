@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import Progress from './Progress/Progress';
 import Logout from '../../components/Logout';
+import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
 
 class Dashboard extends Component<{}> {
@@ -17,7 +18,7 @@ class Dashboard extends Component<{}> {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { navigate } = this.props.navigation;
 
     firebase.auth().onAuthStateChanged(user => {
@@ -40,7 +41,7 @@ class Dashboard extends Component<{}> {
             navigate('Login');
           } else {
             // this.props.fetchCalendar(thisUser);
-            // this.props.fetchProfileImage(thisUser.uid);
+            this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
             // this.props.fetchOldStats(thisUser);
             // this.props.fetchProgress(thisUser);
