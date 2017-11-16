@@ -9,9 +9,9 @@ import Progress from './client/scenes/Dashboard/Progress/Progress';
 import styles from './styles';
 
 const App = StackNavigator({
-  Home: { screen: Home },
+  Home: { screen: Dashboard },
   Login: { screen: Login },
-  Dashboard: { screen: Dashboard },
+  // Dashboard: { screen: Dashboard },
   Progress: { screen: Progress }
 });
 

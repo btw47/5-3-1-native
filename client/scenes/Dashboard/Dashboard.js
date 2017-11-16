@@ -7,15 +7,13 @@ import { bindActionCreators } from 'redux';
 
 import Progress from './Progress/Progress';
 import Logout from '../../components/Logout';
+import UserStats from './UserStats/UserStats';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
 
 class Dashboard extends Component<{}> {
   constructor() {
     super();
-    this.state = {
-      page: 'Dashboard'
-    };
   }
 
   componentWillMount() {
@@ -23,7 +21,7 @@ class Dashboard extends Component<{}> {
 
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
-        this.props.navigation.navigate('Login');
+        navigate('Login');
       } else {
         const thisUser = firebase.auth().currentUser;
         const uid = thisUser.uid;
@@ -38,7 +36,6 @@ class Dashboard extends Component<{}> {
 
           if (uploadList.length === 0) {
             console.log('NO USER INFO YET');
-            navigate('Login');
           } else {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchProfileImage(thisUser.uid);
@@ -52,61 +49,17 @@ class Dashboard extends Component<{}> {
     });
   }
 
-  // componentDidMount() {
-  //   const thisUser = firebase.auth().currentUser;
-  //
-  //   this.props.fetchUser(thisUser);
-  //   this.props.loggedIn();
-  // }
-
   static navigationOptions = {
     title: 'Dashboard'
   };
 
-  renderPage = () => {
-    return (
-      <View>
-        <Text>TEST TEXT</Text>
-      </View>
-    );
-  };
-
   render() {
+    const { state } = this.props;
     return (
       <View>
-        <Text>TEST TEXT</Text>
+        <UserStats profileImage={state.user.profileImage} user={state.user} />
+        <Logout style={{ flex: 1 }} navigation={this.props.navigation} />
       </View>
-      // <View style={{ flex: 1 }}>
-      //   {/* {this.state.page === 'Progress' && <Progress />} */}
-      //   {this.state.page === 'Dashboard' && <Text>Dashboard HERE</Text>}
-      //   {this.state.page === 'Today' && <Text>TODAY WILL GO HERE</Text>}
-      //
-      //   {this.state.page === 'Dashboard' && (
-      //     <Progress navigation={this.props.navigation} />
-      //   )}
-      //
-      //   <Tabbar
-      //     stateFunc={tab => {
-      //       this.setState({ page: tab.page });
-      //       //this.props.navigation.setParams({tabTitle: tab.title})
-      //     }}
-      //     activePage={this.state.page}
-      //     tabs={[
-      //       {
-      //         page: 'Progress',
-      //         icon: 'home'
-      //       },
-      //       {
-      //         page: 'Dashboard',
-      //         icon: 'home'
-      //       },
-      //       {
-      //         page: 'Today',
-      //         icon: 'home'
-      //       }
-      //     ]}
-      //   />
-      // </View>
     );
   }
 }

@@ -64,7 +64,7 @@ export default class Login extends Component<{}> {
             </Text>
           );
         default:
-          return <div />;
+          return <View />;
       }
     }
   };
