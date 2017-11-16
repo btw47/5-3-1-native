@@ -12,6 +12,8 @@ const Logout = props => {
       .catch(function(error) {
         console.error('SIGN OUT ERROR', error);
       });
+
+    props.navigation.navigate('Login');
   };
 
   return (
