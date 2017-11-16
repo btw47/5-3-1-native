@@ -1,6 +1,15 @@
 import actionTypes from '../actionTypes';
-import { firebaseApp, firebaseDb } from '../server/firebase';
+import { firebaseApp, firebaseDb } from '../../../server/firebase';
 
+//-----USER AUTH-----
+export const loggedIn = () => {
+  console.log('LOGGED IN');
+  return {
+    type: actionTypes.LOGGED_IN
+  };
+};
+
+//-----FETCH USER INFO-----
 export function fetchUser(thisUser) {
   return dispatch => {
     if (thisUser != null) {

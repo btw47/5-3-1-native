@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default class Home extends Component<{}> {
+  static navigationOptions = {
+    title: 'Welcome to 5-3-1 Pro'
+  };
+
   handleLogin = () => {
     const { navigate } = this.props.navigation;
     navigate('Login');
@@ -10,7 +14,6 @@ export default class Home extends Component<{}> {
   render() {
     return (
       <View>
-        <Text>WELCOME TO THE HOME PAGE</Text>
         <Button title="Login" onPress={this.handleLogin} />
       </View>
     );

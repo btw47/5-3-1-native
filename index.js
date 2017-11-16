@@ -1,20 +1,30 @@
+import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { createStore, applyMiddleware } from 'redux';
-// import { Provider } from 'react-redux';
-// import thunk from 'redux-thunk';
-//
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+// import { createLogger } from 'redux-logger';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
+
 import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-// import rootReducer from './reducers/rootReducer';
-// import 'bootstrap/dist/css/bootstrap.css';
+import rootReducer from './client/redux/reducers/rootReducer';
 
-// const logger = createLogger();
+const logger = createLogger();
 
-// export const store = createStore(
-//   rootReducer,
-//   {},
-//   applyMiddleware(thunk, logger)
-// );
-AppRegistry.registerComponent('fiveThreeOneApp', () => App);
+export const store = createStore(
+  rootReducer,
+  {},
+  applyMiddleware(thunk, logger)
+);
+
+class Index extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  }
+}
+
+AppRegistry.registerComponent('fiveThreeOneApp', () => Index);
