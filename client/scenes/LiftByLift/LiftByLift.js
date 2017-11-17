@@ -1,37 +1,60 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
+import CheckBox from 'react-native-modest-checkbox';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  Card,
-  CardImage,
-  CardTitle,
-  CardContent,
-  CardAction
-} from 'react-native-card-view';
 import styles from '../../styles';
 
+import Lift from './Lift';
 import * as actions from '../../redux/actions';
 
 class LiftByLift extends Component<{}> {
-  render() {
-    return (
-      <Card style={styles.container}>
-        <CardTitle>
-          <Text style={styles.title}>Today's Workout</Text>
-        </CardTitle>
-        <CardContent>
-          <Text style={{ textDecorationLine: 'line-through' }}>Content</Text>
-          <Text>Content</Text>
-        </CardContent>
-        <CardAction>
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  }
+
+  renderButtons = () => {
+    if (this.state.count > 0 && this.state.count < 5) {
+      return (
+        <View>
           <Button
-            style={styles.button}
-            onPress={() => this.handleRedirect()}
-            title="start your workout"
+            title="<"
+            onPress={() => this.setState({ count: this.state.count - 1 })}
           />
-        </CardAction>
-      </Card>
+          <Button
+            title=">"
+            onPress={() => this.setState({ count: this.state.count + 1 })}
+          />
+        </View>
+      );
+      //5 needs to be changed to the count of exercises
+    } else if (this.state.count > 0) {
+      return (
+        <Button
+          title="<"
+          onPress={() => this.setState({ count: this.state.count - 1 })}
+        />
+      );
+    } else {
+      return (
+        <Button
+          title=">"
+          onPress={() => this.setState({ count: this.state.count + 1 })}
+        />
+      );
+    }
+  };
+
+  render() {
+    console.log('LIFT BY LIFT STATE', this.state);
+    return (
+      <View style={styles.container}>
+        <Lift />
+        {this.renderButtons()}
+      </View>
     );
   }
 }
