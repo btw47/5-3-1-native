@@ -87,7 +87,7 @@ export const fetchTodaysWorkout = uid => {
 
       const uploadList = [];
       for (let i = 0; i < pushList.length; i++) {
-        if (firebaseOutput[pushList[i]].profileImage) {
+        if (firebaseOutput[pushList[i]].benchTemplate) {
           uploadList.push(firebaseOutput[pushList[i]]);
         }
       }

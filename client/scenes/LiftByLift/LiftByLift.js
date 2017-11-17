@@ -53,7 +53,7 @@ class LiftByLift extends Component<{}> {
   }
 
   renderButtons = () => {
-    if (this.state.liftIndex > 0 && this.state.liftIndex < 5) {
+    if (this.state.liftIndex > 0 && this.state.liftIndex < 3) {
       return (
         <View style={{ flexDirection: 'row' }}>
           <Button
@@ -91,7 +91,10 @@ class LiftByLift extends Component<{}> {
     console.log('LIFT BY LIFT PROPS', this.props);
     return (
       <View style={styles.container}>
-        <Lift liftIndex={this.state.liftIndex} />
+        <Lift
+          liftIndex={this.state.liftIndex}
+          templates={this.props.state.user.templates}
+        />
         {this.renderButtons()}
       </View>
     );

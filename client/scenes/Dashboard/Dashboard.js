@@ -40,6 +40,7 @@ class Dashboard extends Component<{}> {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
+            this.props.fetchTodaysWorkout(thisUser.uid);
             // this.props.fetchOldStats(thisUser);
             // this.props.fetchProgress(thisUser);
             this.props.loggedIn();
@@ -64,7 +65,10 @@ class Dashboard extends Component<{}> {
           />
         </View>
         <View style={styles.workoutCard}>
-          <WorkoutCard navigation={this.props.navigation} />
+          <WorkoutCard
+            navigation={this.props.navigation}
+            templates={this.props.state.user.templates}
+          />
           <View>
             <Logout
               style={{ flex: 1, position: 'relative', top: '5%' }}
