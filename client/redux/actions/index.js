@@ -3,7 +3,7 @@ import { firebaseApp, firebaseDb } from '../../../server/firebase';
 
 //-----USER AUTH-----
 export const loggedIn = () => {
-  console.log('LOGGED IN');
+  console.log('LOGGED IN ACTION');
   return {
     type: actionTypes.LOGGED_IN
   };
@@ -11,6 +11,8 @@ export const loggedIn = () => {
 
 //-----FETCH USER INFO-----
 export function fetchUser(thisUser) {
+  console.log('FETCH USER ACTION');
+
   return dispatch => {
     if (thisUser != null) {
       var uid = thisUser.uid;
@@ -74,6 +76,8 @@ export function fetchUser(thisUser) {
 
 //-----Filestack-----
 export const fetchProfileImage = uid => {
+  console.log('FETCH PROFILE IMAGE ACTION');
+
   return dispatch => {
     firebaseDb.ref('users/' + uid + '/images/').on('value', snapshot => {
       const firebaseOutput = snapshot.val();

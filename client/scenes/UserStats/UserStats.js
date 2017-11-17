@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import profileImage from '../../../images/anon-user.jpg';
-import styles from '../../../../styles';
+import profileImage from '../../images/anon-user.jpg';
+import * as actions from '../../redux/actions';
+import styles from '../../styles';
 
-export default class UserStats extends Component<{}> {
+class UserStats extends Component<{}> {
   renderImage = () => {
-    const image = this.props.profileImage
-      ? this.props.profileImage
-      : require('../../../images/anon-user.jpg');
+    const image = this.props.state.user.profileImage
+      ? this.props.state.user.profileImage
+      : require('../../images/anon-user.jpg');
     return (
       <Image source={image} style={styles.profileImage} resizeMode="contain" />
     );
   };
 
   render() {
-    const { user } = this.props;
+    const { user } = this.props.state;
     return (
       <View style={{ flex: 1 }}>
         <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
@@ -32,3 +35,13 @@ export default class UserStats extends Component<{}> {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { state };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(actions, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserStats);

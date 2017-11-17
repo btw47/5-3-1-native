@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class NewDashboard extends Component<{}> {
+export default class GetStarted extends Component<{}> {
   render() {
     return (
       <View>
-        <Text>New dashboard</Text>
+        <Text>Get Started</Text>
       </View>
     );
   }

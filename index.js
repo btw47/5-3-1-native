@@ -17,6 +17,8 @@ export const store = createStore(
   applyMiddleware(thunk, logger)
 );
 
+console.ignoredYellowBox = ['Setting a timer'];
+
 class Index extends Component {
   render() {
     return (

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Tabbar from 'react-native-tabbar-bottom';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Progress from './Progress/Progress';
+import DashboardHeader from './DashboardHeader';
+import Progress from '../Progress/Progress';
 import Logout from '../../components/Logout';
-import UserStats from './UserStats/UserStats';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
+import styles from '../../styles';
 
 class Dashboard extends Component<{}> {
   constructor() {
@@ -17,7 +17,7 @@ class Dashboard extends Component<{}> {
   }
 
   componentWillMount() {
-    const { navigate } = this.props.navigation;
+    // const { navigate } = this.props.navigation;
 
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
@@ -56,9 +56,17 @@ class Dashboard extends Component<{}> {
   render() {
     const { state } = this.props;
     return (
-      <View>
-        <UserStats profileImage={state.user.profileImage} user={state.user} />
-        <Logout style={{ flex: 1 }} navigation={this.props.navigation} />
+      <View style={{ flex: 1 }}>
+        <DashboardHeader
+          profileImage={state.user.profileImage}
+          user={state.user}
+        />
+        {/* <View>
+          <Logout
+            style={{ flex: 1, position: 'relative', top: '5%' }}
+            navigation={this.props.navigation}
+          />
+        </View> */}
       </View>
     );
   }
