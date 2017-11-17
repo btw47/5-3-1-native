@@ -26,8 +26,9 @@ export default class Login extends Component<{}> {
   }
 
   handleLogIn = () => {
-    // const { navigate } = this.props.navigation;
-    // () => navigate('Dashboard');
+    const { navigate } = this.props.navigation;
+    navigate('Dashboard');
+
     const { email, password } = this.state;
 
     firebaseApp
@@ -70,6 +71,8 @@ export default class Login extends Component<{}> {
   };
 
   render() {
+    console.log('FIREBASE AUTH', firebase.auth().currentUser);
+    console.log('LOGIN STATE', this.state);
     return (
       <View>
         <TextInput
