@@ -26,15 +26,19 @@ export default class Login extends Component<{}> {
   }
 
   handleLogIn = () => {
-    const { navigate } = this.props.navigation;
-    navigate('Dashboard');
+    // const { navigate } = this.props.navigation;
+    // navigate('Dashboard');
 
     const { email, password } = this.state;
 
     firebaseApp
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('logged in');
+      })
       .catch(error => {
+        console.log(error);
         this.setState({ error });
       });
   };

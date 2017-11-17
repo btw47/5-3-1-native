@@ -53,6 +53,16 @@ export const fetchUserReducer = (state = {}, action) => {
         ...state,
         userImages: null
       };
+    case actionTypes.FETCH_WORKOUT:
+      return {
+        ...state,
+        templates: action.payload
+      };
+    case actionTypes.NO_TEMPLATE:
+      return {
+        ...state,
+        templates: null
+      };
     default:
       return state;
   }

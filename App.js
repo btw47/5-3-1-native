@@ -11,10 +11,10 @@ import Main from './client/scenes/Main/Main';
 import GetStarted from './client/scenes/GetStarted/GetStarted';
 
 const App = StackNavigator({
-  Home: { screen: Main },
+  Home: { screen: Home },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
-  // Dashboard: { screen: Main },
+  Dashboard: { screen: Main },
   GetStarted: { screen: GetStarted }
 });
 

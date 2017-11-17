@@ -20,7 +20,8 @@ export default class DashboardHeader extends Component<{}> {
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
         <View>
-          <Text>Name: {user.fullName}</Text>
+          <Text>{user.fullName}</Text>
+          <Text>{user.desc}</Text>
         </View>
       </View>
     );

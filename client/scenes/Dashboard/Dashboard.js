@@ -65,12 +65,12 @@ class Dashboard extends Component<{}> {
         </View>
         <View style={styles.workoutCard}>
           <WorkoutCard navigation={this.props.navigation} />
-          {/* <View>
+          <View>
             <Logout
-            style={{ flex: 1, position: 'relative', top: '5%' }}
-            navigation={this.props.navigation}
+              style={{ flex: 1, position: 'relative', top: '5%' }}
+              navigation={this.props.navigation}
             />
-          </View> */}
+          </View>
         </View>
       </View>
     );
