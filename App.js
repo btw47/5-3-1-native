@@ -10,14 +10,17 @@ import LiftByLift from './client/scenes/LiftByLift/LiftByLift';
 import Main from './client/scenes/Main/Main';
 import GetStarted from './client/scenes/GetStarted/GetStarted';
 import SignUp from './client/scenes/GetStarted/SignUp';
+import SetProfile from './client/scenes/GetStarted/SetProfile';
 
 const App = StackNavigator({
-  Home: { screen: Home },
+  // Home: { screen: Home },
+  Home: { screen: SetProfile },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },
   GetStarted: { screen: GetStarted },
   SignUp: { screen: SignUp }
+  // SetProfile: { screen: SetProfile }
 });
 
 export default App;

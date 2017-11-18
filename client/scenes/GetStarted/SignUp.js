@@ -49,6 +49,7 @@ export default class SignUp extends Component<{}> {
           <TextInput
             onChangeText={value => this.setState({ email: value })}
             placeholder="email"
+            keyboardType="email-address"
           />
           <TextInput
             onChangeText={value => this.setState({ password: value })}
