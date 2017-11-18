@@ -120,6 +120,46 @@ export const fetchTodaysWorkout = uid => {
   };
 };
 
+//-----ORM CALCULATOR-----
+export const setORM = (
+  BenchWeight,
+  BenchReps,
+  OverheadWeight,
+  OverheadReps,
+  SquatWeight,
+  SquatReps,
+  DeadliftWeight,
+  DeadliftReps
+) => {
+  return dispatch => {
+    oneRepMax = (weight, reps) => {
+      let max = (weight * reps * 0.0333 + weight) * 0.9;
+      return Math.ceil(max);
+    };
+
+    const bench = this.oneRepMax(parseInt(BenchWeight), parseInt(BenchReps));
+
+    const overhead = this.oneRepMax(
+      parseInt(OverheadWeight),
+      parseInt(OverheadReps)
+    );
+
+    const deadlift = this.oneRepMax(
+      parseInt(DeadliftWeight),
+      parseInt(DeadliftReps)
+    );
+    const squat = this.oneRepMax(parseInt(SquatWeight), parseInt(SquatReps));
+
+    dispatch({
+      type: actionTypes.SET_MAX,
+      bench: bench,
+      overhead: overhead,
+      deadlift: deadlift,
+      squat: squat
+    });
+  };
+};
+
 //-----Filestack-----
 export const fetchProfileImage = uid => {
   return dispatch => {

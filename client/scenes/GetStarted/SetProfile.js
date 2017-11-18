@@ -119,15 +119,15 @@ class SetProfile extends Component<{}> {
   };
 
   render() {
-    // if (this.props.state.OneRep.calculatedMax) {
-    //   if (this.props.state.OneRep.calculatedMax.bench) {
-    //     const calculatedMax = this.props.state.OneRep.calculatedMax;
-    //     this.squat.value = calculatedMax.squat;
-    //     this.deadlift.value = calculatedMax.deadlift;
-    //     this.bench.value = calculatedMax.bench;
-    //     this.overheadPress.value = calculatedMax.overhead;
-    //   }
-    // }
+    if (this.props.state.OneRep.calculatedMax) {
+      if (this.props.state.OneRep.calculatedMax.bench) {
+        const calculatedMax = this.props.state.OneRep.calculatedMax;
+        this.squat.value = calculatedMax.squat;
+        this.deadlift.value = calculatedMax.deadlift;
+        this.bench.value = calculatedMax.bench;
+        this.overheadPress.value = calculatedMax.overhead;
+      }
+    }
 
     return (
       <View>
@@ -152,21 +152,25 @@ class SetProfile extends Component<{}> {
               onChangeText={value => this.setState({ bench: value })}
               placeholder="Bench Press (lbs)"
               keyboardType="numeric"
+              ref={ref => (this.bench = ref)}
             />
             <TextInput
               onChangeText={value => this.setState({ overheadPress: value })}
               placeholder="Overhead Press (lbs)"
               keyboardType="numeric"
+              ref={ref => (this.overheadPress = ref)}
             />
             <TextInput
               onChangeText={value => this.setState({ deadlift: value })}
               placeholder="Deadlift (lbs)"
               keyboardType="numeric"
+              ref={ref => (this.deadlift = ref)}
             />
             <TextInput
               onChangeText={value => this.setState({ squat: value })}
               placeholder="Squat (lbs)"
               keyboardType="numeric"
+              ref={ref => (this.squat = ref)}
             />
           </View>
 
