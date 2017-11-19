@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
     flex: 1,
     height: undefined,
     width: undefined
+  },
+  workoutCard: {
+    position: 'absolute',
+    justifyContent: 'center',
+    top: '10%'
   }
 });
 

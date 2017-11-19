@@ -57,6 +57,8 @@ class UpdateProfile extends Component<{}> {
 
   handleSubmit = () => {
     const date = Date();
+    const fullName = this.props.state.user.fullName;
+    console.log('HANDLE SUBMIT FULL NAME', fullName);
 
     const oneRepMax = {
       squatORM: this.state.squatORM,
@@ -67,6 +69,7 @@ class UpdateProfile extends Component<{}> {
 
     const userStats = {
       weight: this.state.weight,
+      fullName,
       oneRepMax,
       date
     };
@@ -89,6 +92,8 @@ class UpdateProfile extends Component<{}> {
   };
 
   render() {
+    console.log('FULL NAME', this.props.state.user.fullName);
+
     return (
       <View>
         <Text>What is your current weight?</Text>

@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import CheckBox from 'react-native-modest-checkbox';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import DashboardHeader from './DashboardHeader';
-import WorkoutCard from './WorkoutCard';
-import Logout from '../../components/Logout';
-import { firebaseDb } from '../../../server/firebase';
-import * as actions from '../../redux/actions';
 import styles from '../../styles';
 
-class Dashboard extends Component<{}> {
+import Lift from './Lift';
+import { firebaseDb } from '../../../server/firebase';
+import * as actions from '../../redux/actions';
+
+class LiftByLift extends Component<{}> {
   constructor() {
     super();
+    this.state = {
+      liftIndex: 0
+    };
   }
 
   componentWillMount() {
@@ -50,32 +52,50 @@ class Dashboard extends Component<{}> {
     });
   }
 
-  static navigationOptions = {
-    title: 'Dashboard'
+  renderButtons = () => {
+    if (this.state.liftIndex > 0 && this.state.liftIndex < 3) {
+      return (
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            title="<"
+            onPress={() =>
+              this.setState({ liftIndex: this.state.liftIndex - 1 })}
+          />
+          <Button
+            title=">"
+            onPress={() =>
+              this.setState({ liftIndex: this.state.liftIndex + 1 })}
+          />
+        </View>
+      );
+      //5 needs to be changed to the liftIndex of exercises
+    } else if (this.state.liftIndex > 0) {
+      return (
+        <Button
+          title="<"
+          onPress={() => this.setState({ liftIndex: this.state.liftIndex - 1 })}
+        />
+      );
+    } else {
+      return (
+        <Button
+          title=">"
+          onPress={() => this.setState({ liftIndex: this.state.liftIndex + 1 })}
+        />
+      );
+    }
   };
 
   render() {
-    const { state } = this.props;
+    console.log('LIFT BY LIFT STATE', this.state);
+    console.log('LIFT BY LIFT PROPS', this.props);
     return (
-      <View>
-        <View style={{ flex: 1 }}>
-          <DashboardHeader
-            profileImage={state.user.profileImage}
-            user={state.user}
-          />
-        </View>
-        <View style={styles.workoutCard}>
-          <WorkoutCard
-            navigation={this.props.navigation}
-            templates={this.props.state.user.templates}
-          />
-          <View>
-            <Logout
-              style={{ flex: 1, position: 'relative', top: '5%' }}
-              navigation={this.props.navigation}
-            />
-          </View>
-        </View>
+      <View style={styles.container}>
+        <Lift
+          liftIndex={this.state.liftIndex}
+          templates={this.props.state.user.templates}
+        />
+        {this.renderButtons()}
       </View>
     );
   }
@@ -89,4 +109,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(actions, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(LiftByLift);

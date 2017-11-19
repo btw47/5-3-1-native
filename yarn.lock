@@ -3490,6 +3490,10 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-card-view@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-card-view/-/react-native-card-view-0.0.3.tgz#8db9ac4a3f01d08f8bd9f79343082d87fdf09907"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3532,6 +3536,16 @@ react-native-material-ripple@0.7.3:
   resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.7.3.tgz#42287c1fa5b9cbdd7786780fce20165d3cdcf128"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-modest-checkbox@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-modest-checkbox/-/react-native-modest-checkbox-2.0.0.tgz#7ed3dc30118df38b6c3c0e41d98263a8c99365d5"
+  dependencies:
+    prop-types "^15.6.0"
+
+react-native-radio-buttons@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons/-/react-native-radio-buttons-1.0.0.tgz#be828b85897f80ca66ad66ad7adedb6b1890ab9d"
 
 react-native-tab-view@^0.0.70:
   version "0.0.70"
