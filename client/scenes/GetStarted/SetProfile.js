@@ -114,7 +114,11 @@ class SetProfile extends Component<{}> {
 
       console.log('FIREBASE PUSH', firebasePush);
 
-      firebaseDb.ref('users/' + uid + '/user').push(firebasePush);
+      firebaseDb
+        .ref('users/' + uid + '/user')
+        .push(firebasePush)
+        .then(() => this.props.navigation.navigate('GoalsUpdate'))
+        .catch(error => console.log(error));
     }
   };
 

@@ -14,14 +14,15 @@ import SetProfile from './client/scenes/GetStarted/SetProfile';
 import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
 
 const App = StackNavigator({
-  // Home: { screen: Home },
-  Home: { screen: GoalsUpdate },
+  Home: { screen: Home },
+  // Home: { screen: GoalsUpdate },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },
   GetStarted: { screen: GetStarted },
   SignUp: { screen: SignUp },
-  SetProfile: { screen: SetProfile }
+  SetProfile: { screen: SetProfile },
+  GoalsUpdate: { screen: GoalsUpdate }
 });
 
 export default App;

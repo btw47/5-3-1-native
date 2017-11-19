@@ -28,7 +28,7 @@ export default class SignUp extends Component<{}> {
           // })
           //---------------------------------------------------------
           .then(() => {
-            navigate('Dashboard');
+            navigate('SetProfile');
           })
           .catch(error => {
             Alert.alert('Error', error.code);
@@ -63,7 +63,7 @@ export default class SignUp extends Component<{}> {
           />
           <Button
             onPress={() => this.handleSignUp()}
-            title="Log In"
+            title="Sign Up"
             color="#787881"
           />
         </View>
