@@ -15,6 +15,7 @@
 		"react-native-modest-checkbox": "^2.0.0",
 		"react-native-radio-buttons": "^1.0.0",
 		"react-native-tabbar-bottom": "^1.0.4",
+		"react-native-webview-android": "^1.1.13",
 		"react-navigation": "^1.0.0-beta.19",
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",

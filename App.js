@@ -13,6 +13,8 @@ import SignUp from './client/scenes/GetStarted/SignUp';
 import SetProfile from './client/scenes/GetStarted/SetProfile';
 import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
 
+import Progress from './client/scenes/Progress/Progress';
+
 const App = StackNavigator({
   Home: { screen: Home },
   // Home: { screen: GoalsUpdate },

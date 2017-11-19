@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     top: '10%'
+  },
+  containerWebView: {
+    flex: 1,
+    justifyContent: 'center'
   }
 });
 

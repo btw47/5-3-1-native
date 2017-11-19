@@ -72,8 +72,8 @@ export default class WorkoutCard extends Component {
           {this.props.templates &&
             this.state.liftIndex === 0 &&
             this.props.templates.benchTemplate[0].map(a => (
-              <View>
-                <Text key={a}>{a}</Text>
+              <View key={a}>
+                <Text>{a}</Text>
               </View>
             ))}
           {this.props.templates &&
