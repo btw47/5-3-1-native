@@ -259,6 +259,7 @@ class GoalsUpdate extends React.Component {
   };
 
   handleSubmit = () => {
+    console.log('GOALS UPDATE CALLED');
     if (
       !this.state.selectedDay ||
       !this.state.selectedWeekday ||
@@ -277,7 +278,8 @@ class GoalsUpdate extends React.Component {
 
       for (prop in this.state.selectedWeekday) {
         if (this.state.selectedWeekday[prop] === true) {
-          uploadSelectedWeekday.push(prop);
+          const propInt = parseInt(prop);
+          uploadSelectedWeekday.push(propInt);
         }
       }
 
@@ -290,39 +292,36 @@ class GoalsUpdate extends React.Component {
 
       //TODO: need to replace with keyword in database
 
+      const template = this.state.selectedExercise;
       let pushTemplate;
-      switch (this.state.selectedExercise) {
-        case 'Boring But Big':
-          pushTemplate = 'boringButBig';
-          return pushTemplate;
-        case 'Triumvirate':
-          pushTemplate = 'triumvirate';
-          return pushTemplate;
-        case 'Not Doing Jack':
-          pushTemplate = 'notDoingJack';
-          return pushTemplate;
-        case 'Periodization Bible':
-          pushTemplate = 'periodizationBible';
-          return pushTemplate;
-        case 'Bodyweight':
-          pushTemplate = 'bodyweight';
-          return pushTemplate;
-        default:
-          return null;
+      if (template === 'Boring But Big') {
+        pushTemplate = 'boringButBig';
+      } else if (template === 'Triumvirate') {
+        pushTemplate = 'triumvirate';
+      } else if (template === 'Not Doing Jack') {
+        pushTemplate = 'notDoingJack';
+      } else if (template === 'Periodization Bible') {
+        pushTemplate = 'periodizationBible';
+      } else if (template === 'Bodyweight') {
+        pushTemplate = 'bodyweight';
       }
+
+      const firebasePush = {
+        selectedDay: this.state.selectedDay,
+        selectedWeekday: uploadSelectedWeekday,
+        selectedExercise: pushTemplate,
+        benchTemplate: Bench,
+        deadliftTemplate: Deadlift,
+        squatTemplate: Squat,
+        ohpTemplate: Overhead,
+        date: date
+      };
+
+      console.log('GOALS UPDATE PUSH', firebasePush);
 
       firebaseDb
         .ref('users/' + uid + '/calendar/')
-        .push({
-          selectedDay: this.state.selectedDay,
-          selectedWeekday: uploadSelectedWeekday,
-          selectedExercise: this.state.selectedExercise,
-          benchTemplate: Bench,
-          deadliftTemplate: Deadlift,
-          squatTemplate: Squat,
-          ohpTemplate: Overhead,
-          date: date
-        })
+        .push(firebasePush)
         .then(() => {
           this.props.navigation.navigate('Dashboard');
         })
