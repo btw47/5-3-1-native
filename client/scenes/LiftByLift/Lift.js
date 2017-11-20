@@ -20,13 +20,14 @@ export default class Lift extends Component<{}> {
     console.log('LIFT PROPS', this.props);
     return (
       <Card>
-        <CardTitle>{this.renderTitle()}</CardTitle>
         <CardContent>
+          <Text style={styles.title}>{this.renderTitle()}</Text>
           {this.props.templates &&
             this.props.liftIndex === 0 &&
             this.props.templates.benchTemplate[0].map(a => (
               <CheckBox
                 label={a}
+                key={a}
                 checkedImage={require('../../images/checked.png')}
                 uncheckedImage={require('../../images/unchecked.png')}
               />
@@ -36,6 +37,7 @@ export default class Lift extends Component<{}> {
             this.props.templates.ohpTemplate[0].map(a => (
               <CheckBox
                 label={a}
+                key={a}
                 checkedImage={require('../../images/checked.png')}
                 uncheckedImage={require('../../images/unchecked.png')}
               />
@@ -45,6 +47,7 @@ export default class Lift extends Component<{}> {
             this.props.templates.squatTemplate[0].map(a => (
               <CheckBox
                 label={a}
+                key={a}
                 checkedImage={require('../../images/checked.png')}
                 uncheckedImage={require('../../images/unchecked.png')}
               />
@@ -54,23 +57,12 @@ export default class Lift extends Component<{}> {
             this.props.templates.deadliftTemplate[0].map(a => (
               <CheckBox
                 label={a}
+                key={a}
                 checkedImage={require('../../images/checked.png')}
                 uncheckedImage={require('../../images/unchecked.png')}
               />
             ))}
-          {/* <CheckBox
-            label="4 reps x 200 lbs"
-            checkedImage={require('../../images/checked.png')}
-            uncheckedImage={require('../../images/unchecked.png')}
-          /> */}
         </CardContent>
-        {/* <CardAction>
-            <Button
-            style={styles.button}
-            onPress={() => this.handleRedirect()}
-            title="start your workout"
-            />
-        </CardAction> */}
       </Card>
     );
   }

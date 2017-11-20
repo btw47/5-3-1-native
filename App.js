@@ -16,11 +16,11 @@ import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
 import Progress from './client/scenes/Progress/Progress';
 
 const App = StackNavigator({
-  // Home: { screen: Home },
-  Home: { screen: Main },
+  Home: { screen: Home },
+  // Home: { screen: LiftByLift },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
-  // Dashboard: { screen: Main },
+  Dashboard: { screen: Main },
   GetStarted: { screen: GetStarted },
   SignUp: { screen: SignUp },
   SetProfile: { screen: SetProfile },

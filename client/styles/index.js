@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     // backgroundColor: '#F5FCFF'
   },
   title: {
-    fontSize: 25
+    fontSize: 40,
+    marginBottom: '50%'
   },
   welcome: {
     fontSize: 20,
@@ -53,6 +54,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir Next',
     fontWeight: '500',
     color: 'white'
+  },
+  sideBySideButtons: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 

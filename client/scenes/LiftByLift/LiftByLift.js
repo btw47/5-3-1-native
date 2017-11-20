@@ -55,33 +55,49 @@ class LiftByLift extends Component<{}> {
   renderButtons = () => {
     if (this.state.liftIndex > 0 && this.state.liftIndex < 3) {
       return (
-        <View style={{ flexDirection: 'row' }}>
-          <Button
-            title="<"
-            onPress={() =>
-              this.setState({ liftIndex: this.state.liftIndex - 1 })}
-          />
-          <Button
-            title=">"
-            onPress={() =>
-              this.setState({ liftIndex: this.state.liftIndex + 1 })}
-          />
+        <View style={styles.sideBySideButtons}>
+          <View style={{ flex: 1 }}>
+            <Button
+              title="<"
+              onPress={() =>
+                this.setState({ liftIndex: this.state.liftIndex - 1 })}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Button
+              title=">"
+              onPress={() =>
+                this.setState({ liftIndex: this.state.liftIndex + 1 })}
+            />
+          </View>
         </View>
       );
       //5 needs to be changed to the liftIndex of exercises
     } else if (this.state.liftIndex > 0) {
       return (
-        <Button
-          title="<"
-          onPress={() => this.setState({ liftIndex: this.state.liftIndex - 1 })}
-        />
+        <View style={styles.sideBySideButtons}>
+          <View style={{ flex: 1 }}>
+            <Button
+              title="<"
+              onPress={() =>
+                this.setState({ liftIndex: this.state.liftIndex - 1 })}
+            />
+          </View>
+          <View style={{ flex: 1 }} />
+        </View>
       );
     } else {
       return (
-        <Button
-          title=">"
-          onPress={() => this.setState({ liftIndex: this.state.liftIndex + 1 })}
-        />
+        <View style={styles.sideBySideButtons}>
+          <View style={{ flex: 1 }} />
+          <View style={{ flex: 1 }}>
+            <Button
+              title=">"
+              onPress={() =>
+                this.setState({ liftIndex: this.state.liftIndex + 1 })}
+            />
+          </View>
+        </View>
       );
     }
   };
@@ -90,12 +106,12 @@ class LiftByLift extends Component<{}> {
     console.log('LIFT BY LIFT STATE', this.state);
     console.log('LIFT BY LIFT PROPS', this.props);
     return (
-      <View style={styles.container}>
+      <View style={{ flex: 1 }}>
         <Lift
           liftIndex={this.state.liftIndex}
           templates={this.props.state.user.templates}
         />
-        {this.renderButtons()}
+        <View style={{ height: '10%' }}>{this.renderButtons()}</View>
       </View>
     );
   }
