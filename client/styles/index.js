@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    alignItems: 'center'
+    // backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
@@ -35,6 +35,19 @@ const styles = StyleSheet.create({
   containerWebView: {
     flex: 1,
     justifyContent: 'center'
+  },
+  getStatedButton: {
+    backgroundColor: '#1a8cff',
+    borderColor: '#333',
+    borderWidth: 2,
+    borderRadius: 22,
+    margin: '5%'
+  },
+  getStartedButtonText: {
+    width: 200,
+    fontFamily: 'Avenir Next',
+    fontWeight: '500',
+    color: 'white'
   }
 });
 

@@ -17,7 +17,7 @@ import Progress from './client/scenes/Progress/Progress';
 
 const App = StackNavigator({
   Home: { screen: Home },
-  // Home: { screen: GoalsUpdate },
+  // Home: { screen: Progress },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },
