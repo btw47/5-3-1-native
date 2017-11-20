@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
+import styles from '../../styles';
 
 class UpdateProfile extends Component<{}> {
   constructor() {
@@ -96,6 +97,9 @@ class UpdateProfile extends Component<{}> {
 
     return (
       <View>
+        <Text style={{ fontSize: 30, marginBottom: '10%' }}>
+          Update Your Stats
+        </Text>
         <Text>What is your current weight?</Text>
         <TextInput
           onChangeText={value => this.setState({ weight: value })}

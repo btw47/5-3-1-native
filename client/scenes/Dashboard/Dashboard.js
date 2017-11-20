@@ -69,6 +69,10 @@ class Dashboard extends Component<{}> {
               marginLeft: '3%',
               height: '15%'
             }}>
+            <Logout
+              style={{ flex: 1, position: 'relative', top: '5%' }}
+              navigation={this.props.navigation}
+            />
             <DashboardHeader
               profileImage={state.user.profileImage}
               user={state.user}
@@ -81,10 +85,6 @@ class Dashboard extends Component<{}> {
             templates={this.props.state.user.templates}
           />
         </View>
-        {/* <Logout
-          style={{ flex: 1, position: 'relative', top: '5%' }}
-          navigation={this.props.navigation}
-        /> */}
       </View>
     );
   }

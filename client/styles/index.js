@@ -8,13 +8,21 @@ const styles = StyleSheet.create({
     // backgroundColor: '#F5FCFF'
   },
   title: {
-    fontSize: 40,
-    marginBottom: '50%'
+    fontSize: 40
+    // marginBottom: '50%'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10
+  },
+  logoStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '65%',
+    height: '65%',
+    resizeMode: 'contain',
+    position: 'absolute'
   },
   instructions: {
     textAlign: 'center',

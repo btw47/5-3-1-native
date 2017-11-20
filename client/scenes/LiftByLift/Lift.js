@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
 import CheckBox from 'react-native-modest-checkbox';
 import {
   Card,
@@ -22,6 +22,20 @@ export default class Lift extends Component<{}> {
       <Card>
         <CardContent>
           <Text style={styles.title}>{this.renderTitle()}</Text>
+          <Image
+            source={require('../../images/bench.gif')}
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              width: '65%',
+              height: '65%',
+              resizeMode: 'contain',
+              position: 'absolute',
+              marginTop: '20%',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          />
           {this.props.templates &&
             this.props.liftIndex === 0 &&
             this.props.templates.benchTemplate[0].map(a => (

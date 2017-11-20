@@ -78,7 +78,11 @@ export default class Login extends Component<{}> {
     console.log('FIREBASE AUTH', firebase.auth().currentUser);
     console.log('LOGIN STATE', this.state);
     return (
-      <View>
+      <View style={{ marginHorizontal: '5%', marginTop: '10%' }}>
+        <Text
+          style={{ fontSize: 30, textAlign: 'center', marginBottom: '15%' }}>
+          Log In
+        </Text>
         <TextInput
           onChangeText={value => this.setState({ email: value })}
           placeholder="email"
@@ -95,6 +99,7 @@ export default class Login extends Component<{}> {
           title="Log In"
           color="#787881"
         />
+
         {this.renderError()}
       </View>
     );

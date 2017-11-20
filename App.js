@@ -12,19 +12,20 @@ import GetStarted from './client/scenes/GetStarted/GetStarted';
 import SignUp from './client/scenes/GetStarted/SignUp';
 import SetProfile from './client/scenes/GetStarted/SetProfile';
 import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
+import UpdateProfile from './client/scenes/UpdateProfile/UpdateProfile';
 
 import Progress from './client/scenes/Progress/Progress';
 
 const App = StackNavigator({
   Home: { screen: Home },
-  // Home: { screen: LiftByLift },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },
   GetStarted: { screen: GetStarted },
   SignUp: { screen: SignUp },
   SetProfile: { screen: SetProfile },
-  GoalsUpdate: { screen: GoalsUpdate }
+  GoalsUpdate: { screen: GoalsUpdate },
+  UpdateProfile: { screen: UpdateProfile }
 });
 
 export default App;

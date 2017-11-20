@@ -45,7 +45,11 @@ export default class SignUp extends Component<{}> {
   render() {
     return (
       <View>
-        <View>
+        <View style={{ marginHorizontal: '5%', marginTop: '10%' }}>
+          <Text
+            style={{ fontSize: 30, textAlign: 'center', marginBottom: '15%' }}>
+            Create an account
+          </Text>
           <TextInput
             onChangeText={value => this.setState({ email: value })}
             placeholder="email"
@@ -64,7 +68,7 @@ export default class SignUp extends Component<{}> {
           <Button
             onPress={() => this.handleSignUp()}
             title="Sign Up"
-            color="#787881"
+            color="#f49842"
           />
         </View>
       </View>

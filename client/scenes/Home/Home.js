@@ -4,15 +4,6 @@ import Button from 'apsl-react-native-button';
 
 import styles from '../../styles';
 
-const logoStyle = {
-  flex: 1,
-  flexDirection: 'row',
-  width: '65%',
-  height: '65%',
-  resizeMode: 'contain',
-  position: 'absolute'
-};
-
 export default class Home extends Component<{}> {
   static navigationOptions = {
     title: 'Welcome to 5-3-1 Pro'
@@ -34,7 +25,7 @@ export default class Home extends Component<{}> {
         <View style={styles.container}>
           <Image
             source={require('../../images/better-button-logo-best.png')}
-            style={logoStyle}
+            style={styles.logoStyle}
           />
         </View>
         <View style={{ flex: 1, position: 'relative', top: '5%' }}>
