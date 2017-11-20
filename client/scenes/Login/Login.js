@@ -87,11 +87,15 @@ export default class Login extends Component<{}> {
           onChangeText={value => this.setState({ email: value })}
           placeholder="email"
           keyboardType="email-address"
+          onSubmitEditing={event => {
+            this.refs.Password.focus();
+          }}
         />
         <TextInput
           onChangeText={value => this.setState({ password: value })}
           placeholder="password"
           secureTextEntry={true}
+          ref="Password"
         />
         <View style={{ marginTop: '10%' }}>
           <Button

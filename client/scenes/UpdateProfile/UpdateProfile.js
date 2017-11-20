@@ -53,7 +53,7 @@ class UpdateProfile extends Component<{}> {
   }
 
   static navigationOptions = {
-    title: 'Update Your Stats'
+    title: 'Update'
   };
 
   handleSubmit = () => {
@@ -96,7 +96,7 @@ class UpdateProfile extends Component<{}> {
     console.log('FULL NAME', this.props.state.user.fullName);
 
     return (
-      <View style={{ marginBottom: '5%' }}>
+      <View style={{ marginBottom: '20%' }}>
         <Text style={{ fontSize: 30, marginBottom: '10%' }}>
           Update Your Stats
         </Text>
@@ -122,11 +122,13 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ deadliftORM: value })}
           placeholder="Deadlift (lbs)"
         />
-        <Button
-          onPress={() => this.handleSubmit()}
-          title="Update Stats"
-          color="#787881"
-        />
+        <View style={{ marginTop: '5%' }}>
+          <Button
+            onPress={() => this.handleSubmit()}
+            title="Update Stats"
+            color="#787881"
+          />
+        </View>
       </View>
     );
   }

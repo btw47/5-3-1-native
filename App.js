@@ -14,10 +14,8 @@ import SetProfile from './client/scenes/GetStarted/SetProfile';
 import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
 import UpdateProfile from './client/scenes/UpdateProfile/UpdateProfile';
 
-import Progress from './client/scenes/Progress/Progress';
-
 const App = StackNavigator({
-  Home: { screen: Home },
+  Home: { screen: Main },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },
