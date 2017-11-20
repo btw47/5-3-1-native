@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DashboardHeader from './DashboardHeader';
-import Progress from '../Progress/Progress';
+import WorkoutCard from './WorkoutCard';
 import Logout from '../../components/Logout';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
@@ -40,6 +40,7 @@ class Dashboard extends Component<{}> {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
+            this.props.fetchTodaysWorkout(thisUser.uid);
             // this.props.fetchOldStats(thisUser);
             // this.props.fetchProgress(thisUser);
             this.props.loggedIn();
@@ -56,17 +57,34 @@ class Dashboard extends Component<{}> {
   render() {
     const { state } = this.props;
     return (
-      <View style={{ flex: 1 }}>
-        <DashboardHeader
-          profileImage={state.user.profileImage}
-          user={state.user}
-        />
-        {/* <View>
-          <Logout
-            style={{ flex: 1, position: 'relative', top: '5%' }}
+      <View>
+        <View
+          style={{
+            height: '20%'
+            // backgroundColor: 'gray'
+          }}>
+          <View
+            style={{
+              marginTop: '5%',
+              marginLeft: '3%',
+              height: '15%'
+            }}>
+            <Logout
+              style={{ flex: 1, position: 'relative', top: '5%' }}
+              navigation={this.props.navigation}
+            />
+            <DashboardHeader
+              profileImage={state.user.profileImage}
+              user={state.user}
+            />
+          </View>
+        </View>
+        <View style={styles.workoutCard}>
+          <WorkoutCard
             navigation={this.props.navigation}
+            templates={this.props.state.user.templates}
           />
-        </View> */}
+        </View>
       </View>
     );
   }

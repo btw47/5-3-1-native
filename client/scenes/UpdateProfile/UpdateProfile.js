@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
+import styles from '../../styles';
 
 class UpdateProfile extends Component<{}> {
   constructor() {
@@ -57,6 +58,8 @@ class UpdateProfile extends Component<{}> {
 
   handleSubmit = () => {
     const date = Date();
+    const fullName = this.props.state.user.fullName;
+    console.log('HANDLE SUBMIT FULL NAME', fullName);
 
     const oneRepMax = {
       squatORM: this.state.squatORM,
@@ -67,6 +70,7 @@ class UpdateProfile extends Component<{}> {
 
     const userStats = {
       weight: this.state.weight,
+      fullName,
       oneRepMax,
       date
     };
@@ -89,8 +93,13 @@ class UpdateProfile extends Component<{}> {
   };
 
   render() {
+    console.log('FULL NAME', this.props.state.user.fullName);
+
     return (
       <View>
+        <Text style={{ fontSize: 30, marginBottom: '10%' }}>
+          Update Your Stats
+        </Text>
         <Text>What is your current weight?</Text>
         <TextInput
           onChangeText={value => this.setState({ weight: value })}

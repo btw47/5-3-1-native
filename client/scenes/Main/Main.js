@@ -19,9 +19,15 @@ export default class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.page === 'Progress' && <Progress />}
-        {this.state.page === 'Dashboard' && <Dashboard />}
-        {this.state.page === 'UpdateProfile' && <UpdateProfile />}
+        {this.state.page === 'Progress' && (
+          <Progress navigation={this.props.navigation} />
+        )}
+        {this.state.page === 'Dashboard' && (
+          <Dashboard navigation={this.props.navigation} />
+        )}
+        {this.state.page === 'UpdateProfile' && (
+          <UpdateProfile navigation={this.props.navigation} />
+        )}
         {this.state.page === 'UserStats' && (
           <UserStats navigation={this.props.navigation} />
         )}

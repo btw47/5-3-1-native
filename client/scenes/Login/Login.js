@@ -26,15 +26,19 @@ export default class Login extends Component<{}> {
   }
 
   handleLogIn = () => {
-    const { navigate } = this.props.navigation;
-    navigate('Dashboard');
+    // const { navigate } = this.props.navigation;
+    // navigate('Dashboard');
 
     const { email, password } = this.state;
 
     firebaseApp
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('logged in');
+      })
       .catch(error => {
+        console.log(error);
         this.setState({ error });
       });
   };
@@ -74,10 +78,15 @@ export default class Login extends Component<{}> {
     console.log('FIREBASE AUTH', firebase.auth().currentUser);
     console.log('LOGIN STATE', this.state);
     return (
-      <View>
+      <View style={{ marginHorizontal: '5%', marginTop: '10%' }}>
+        <Text
+          style={{ fontSize: 30, textAlign: 'center', marginBottom: '15%' }}>
+          Log In
+        </Text>
         <TextInput
           onChangeText={value => this.setState({ email: value })}
           placeholder="email"
+          keyboardType="email-address"
         />
         <TextInput
           onChangeText={value => this.setState({ password: value })}
@@ -90,6 +99,7 @@ export default class Login extends Component<{}> {
           title="Log In"
           color="#787881"
         />
+
         {this.renderError()}
       </View>
     );

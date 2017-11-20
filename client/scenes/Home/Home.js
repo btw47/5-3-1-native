@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
+import Button from 'apsl-react-native-button';
 
 import styles from '../../styles';
-
-const logoStyle = {
-  flex: 1,
-  flexDirection: 'row',
-  width: '65%',
-  height: '65%',
-  resizeMode: 'contain',
-  position: 'absolute'
-};
 
 export default class Home extends Component<{}> {
   static navigationOptions = {
@@ -33,13 +25,23 @@ export default class Home extends Component<{}> {
         <View style={styles.container}>
           <Image
             source={require('../../images/better-button-logo-best.png')}
-            style={logoStyle}
+            style={styles.logoStyle}
           />
         </View>
         <View style={{ flex: 1, position: 'relative', top: '5%' }}>
-          <Button title="get started" onPress={this.handleGetStarted} />
+          <Button
+            style={styles.getStatedButton}
+            onPress={this.handleGetStarted}
+            textStyle={styles.getStartedButtonText}>
+            Get Started
+          </Button>
+          <Button
+            style={styles.getStatedButton}
+            onPress={this.handleLogin}
+            textStyle={styles.getStartedButtonText}>
+            Log In
+          </Button>
         </View>
-        <Button title="Login" onPress={this.handleLogin} />
       </View>
     );
   }
