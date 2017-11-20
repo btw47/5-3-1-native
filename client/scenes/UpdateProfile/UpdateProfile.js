@@ -96,7 +96,7 @@ class UpdateProfile extends Component<{}> {
     console.log('FULL NAME', this.props.state.user.fullName);
 
     return (
-      <View>
+      <View style={{ marginBottom: '5%' }}>
         <Text style={{ fontSize: 30, marginBottom: '10%' }}>
           Update Your Stats
         </Text>

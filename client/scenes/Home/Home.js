@@ -30,13 +30,13 @@ export default class Home extends Component<{}> {
         </View>
         <View style={{ flex: 1, position: 'relative', top: '5%' }}>
           <Button
-            style={styles.getStatedButton}
+            style={styles.getStartedButton}
             onPress={this.handleGetStarted}
             textStyle={styles.getStartedButtonText}>
             Get Started
           </Button>
           <Button
-            style={styles.getStatedButton}
+            style={styles.getStartedButton}
             onPress={this.handleLogin}
             textStyle={styles.getStartedButtonText}>
             Log In

@@ -4,8 +4,8 @@ import WebViewAndroid from 'react-native-webview-android';
 
 import styles from '../../styles';
 
-// const SITE_URL = 'https://app-ffb9e.firebaseapp.com/DetailedProgress';
-const SITE_URL = 'https://www.youtube.com';
+const SITE_URL = 'https://www.google.com';
+// const SITE_URL = 'https://app-ffb9e.firebaseapp.com/';
 
 export default class WebViewProgress extends Component {
   constructor() {
@@ -64,7 +64,7 @@ export default class WebViewProgress extends Component {
         builtInZoomControls={false}
         onNavigationStateChange={event => this.onNavigationStateChange(event)}
         url={SITE_URL} // or use the source(object) attribute...
-        style={{ flex: 1 }}
+        // style={{ flex: 1 }}
       />
     );
 
