@@ -20,7 +20,7 @@ class UserStats extends Component<{}> {
   render() {
     const { user } = this.props.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
         <View>
           <Text>Name: {user.fullName}</Text>

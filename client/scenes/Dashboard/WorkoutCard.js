@@ -63,50 +63,52 @@ export default class WorkoutCard extends Component {
 
   render() {
     return (
-      <Card>
-        <CardTitle>
+      <View style={{ height: '75%' }}>
+        <Card>
+          {/* <CardTitle> */}
           <Text style={styles.title}>Today's Workout</Text>
-        </CardTitle>
-        <CardContent>
-          {this.renderTitle()}
-          {this.props.templates &&
-            this.state.liftIndex === 0 &&
-            this.props.templates.benchTemplate[0].map(a => (
-              <View key={a}>
-                <Text>{a}</Text>
-              </View>
-            ))}
-          {this.props.templates &&
-            this.state.liftIndex === 1 &&
-            this.props.templates.ohpTemplate[0].map(a => (
-              <View>
-                <Text key={a}>{a}</Text>
-              </View>
-            ))}
-          {this.props.templates &&
-            this.state.liftIndex === 2 &&
-            this.props.templates.squatTemplate[0].map(a => (
-              <View>
-                <Text key={a}>{a}</Text>
-              </View>
-            ))}
-          {this.props.templates &&
-            this.state.liftIndex === 3 &&
-            this.props.templates.deadliftTemplate[0].map(a => (
-              <View>
-                <Text key={a}>{a}</Text>
-              </View>
-            ))}
-          {this.renderButtons()}
-        </CardContent>
-        <CardAction>
-          <Button
-            style={styles.button}
-            onPress={() => this.handleRedirect()}
-            title="start your workout"
-          />
-        </CardAction>
-      </Card>
+          {/* </CardTitle> */}
+          <CardContent>
+            {this.renderTitle()}
+            {this.props.templates &&
+              this.state.liftIndex === 0 &&
+              this.props.templates.benchTemplate[0].map(a => (
+                <View key={a}>
+                  <Text>{a}</Text>
+                </View>
+              ))}
+            {this.props.templates &&
+              this.state.liftIndex === 1 &&
+              this.props.templates.ohpTemplate[0].map(a => (
+                <View>
+                  <Text key={a}>{a}</Text>
+                </View>
+              ))}
+            {this.props.templates &&
+              this.state.liftIndex === 2 &&
+              this.props.templates.squatTemplate[0].map(a => (
+                <View>
+                  <Text key={a}>{a}</Text>
+                </View>
+              ))}
+            {this.props.templates &&
+              this.state.liftIndex === 3 &&
+              this.props.templates.deadliftTemplate[0].map(a => (
+                <View>
+                  <Text key={a}>{a}</Text>
+                </View>
+              ))}
+            {this.renderButtons()}
+          </CardContent>
+          <CardAction>
+            <Button
+              style={styles.button}
+              onPress={() => this.handleRedirect()}
+              title="start your workout"
+            />
+          </CardAction>
+        </Card>
+      </View>
     );
   }
 }

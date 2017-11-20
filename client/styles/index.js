@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
     // backgroundColor: '#F5FCFF'
   },
+  title: {
+    fontSize: 25
+  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -28,9 +31,11 @@ const styles = StyleSheet.create({
     width: undefined
   },
   workoutCard: {
-    position: 'absolute',
+    flex: 1,
     justifyContent: 'center',
-    top: '10%'
+    alignItems: 'center',
+    marginBottom: '15%',
+    marginTop: '5%'
   },
   containerWebView: {
     flex: 1,

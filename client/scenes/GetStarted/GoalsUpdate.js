@@ -299,9 +299,9 @@ class GoalsUpdate extends React.Component {
       } else if (template === 'Triumvirate') {
         pushTemplate = 'triumvirate';
       } else if (template === 'Not Doing Jack') {
-        pushTemplate = 'notDoingJack';
+        pushTemplate = 'jackShit';
       } else if (template === 'Periodization Bible') {
-        pushTemplate = 'periodizationBible';
+        pushTemplate = 'perBible';
       } else if (template === 'Bodyweight') {
         pushTemplate = 'bodyweight';
       }

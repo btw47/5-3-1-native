@@ -58,24 +58,33 @@ class Dashboard extends Component<{}> {
     const { state } = this.props;
     return (
       <View>
-        <View style={{ flex: 1 }}>
-          <DashboardHeader
-            profileImage={state.user.profileImage}
-            user={state.user}
-          />
+        <View
+          style={{
+            height: '20%'
+            // backgroundColor: 'gray'
+          }}>
+          <View
+            style={{
+              marginTop: '5%',
+              marginLeft: '3%',
+              height: '15%'
+            }}>
+            <DashboardHeader
+              profileImage={state.user.profileImage}
+              user={state.user}
+            />
+          </View>
         </View>
         <View style={styles.workoutCard}>
           <WorkoutCard
             navigation={this.props.navigation}
             templates={this.props.state.user.templates}
           />
-          <View>
-            <Logout
-              style={{ flex: 1, position: 'relative', top: '5%' }}
-              navigation={this.props.navigation}
-            />
-          </View>
         </View>
+        {/* <Logout
+          style={{ flex: 1, position: 'relative', top: '5%' }}
+          navigation={this.props.navigation}
+        /> */}
       </View>
     );
   }
