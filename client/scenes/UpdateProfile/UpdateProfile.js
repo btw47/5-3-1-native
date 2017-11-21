@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, Alert } from 'react-native';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -88,6 +88,12 @@ class UpdateProfile extends Component<{}> {
         .push(userStats)
         .then(() => {
           console.log('Stats Updated');
+        })
+        .then(() => {
+          const { navigate } = this.props.navigation;
+
+          Alert.alert('Stats Updated');
+          navigate('/Dashboard');
         });
     }
   };

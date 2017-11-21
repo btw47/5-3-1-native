@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import DetailedProgress from './DetailedProgress';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
+import styles from '../../styles';
 
 class Progress extends Component<{}> {
   state = { showModal: false };
@@ -68,8 +69,8 @@ class Progress extends Component<{}> {
   render() {
     console.log('PROGRESS', this.props);
     return (
-      <View style={{ marginTop: 22 }}>
-        <Text>PROGRESS WILL GO HERE</Text>
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ fontSize: 30, textAlign: 'center' }}>PROGRESS</Text>
         <Modal
           animationType="slide"
           transparent={false}
