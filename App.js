@@ -15,7 +15,7 @@ import GoalsUpdate from './client/scenes/GetStarted/GoalsUpdate';
 import UpdateProfile from './client/scenes/UpdateProfile/UpdateProfile';
 
 const App = StackNavigator({
-  Home: { screen: Home },
+  Home: { screen: Main },
   Login: { screen: Login },
   LiftByLift: { screen: LiftByLift },
   Dashboard: { screen: Main },

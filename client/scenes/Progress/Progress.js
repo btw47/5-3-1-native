@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Modal, Text, Button } from 'react-native';
 import firebase from 'firebase';
+import { VictoryBar } from 'victory-native';
 
-import WebViewProgress from './WebViewProgress';
+import DetailedProgress from './DetailedProgress';
 
 export default class Progress extends Component<{}> {
   state = { showModal: false };
@@ -15,8 +16,9 @@ export default class Progress extends Component<{}> {
           transparent={false}
           visible={this.state.showModal}
           onRequestClose={() => this.setState({ showModal: false })}>
-          <WebViewProgress />
+          <DetailedProgress />
         </Modal>
+        <VictoryBar />
         <Button
           title="visualize progress"
           onPress={() => {
