@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import UserChart from './UserChart';
 import profileImage from '../../images/anon-user.jpg';
 import * as actions from '../../redux/actions';
 import styles from '../../styles';
@@ -29,9 +30,7 @@ class UserStats extends Component<{}> {
             {this.renderImage()}
           </View> */}
           <View style={{ width: '40%', height: '40%' }}>
-            <Text style={styles.title}>
-              EITHER USER IMAGE OR GRAPHS WILL GO HERE
-            </Text>
+            <UserChart />
           </View>
           <View>
             <Text style={styles.userStats}>Name: {user.fullName}</Text>

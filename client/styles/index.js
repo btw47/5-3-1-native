@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
     // marginBottom: '50%'
   },
   dashboardTitle: {
-    fontSize: 40,
-    textAlign: 'center'
+    fontSize: 30,
+    textAlign: 'center',
+    marginLeft: '5%'
     // marginBottom: '50%'
   },
   welcome: {
