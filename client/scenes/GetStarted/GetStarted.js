@@ -11,7 +11,7 @@ export default class GetStarted extends Component<{}> {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginHorizontal: '2%' }}>
         <View style={styles.container}>
           <Image
             source={require('../../images/better-button-logo-best.png')}
