@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
-import Button from 'apsl-react-native-button';
+import { Text, View, Image, Button } from 'react-native';
 
 import styles from '../../styles';
 
@@ -21,7 +20,7 @@ export default class Home extends Component<{}> {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginHorizontal: '2%' }}>
         <View style={styles.container}>
           <Image
             source={require('../../images/better-button-logo-best.png')}
@@ -29,18 +28,32 @@ export default class Home extends Component<{}> {
           />
         </View>
         <View style={{ flex: 1, position: 'relative', top: '5%' }}>
-          <Button
-            style={styles.getStatedButton}
+          {/* <Button
+            style={styles.getStartedButton}
             onPress={this.handleGetStarted}
             textStyle={styles.getStartedButtonText}>
             Get Started
-          </Button>
-          <Button
-            style={styles.getStatedButton}
+            </Button>
+            <Button
+            style={styles.getStartedButton}
             onPress={this.handleLogin}
             textStyle={styles.getStartedButtonText}>
             Log In
-          </Button>
+          </Button> */}
+          <View style={{ marginTop: '10%', marginBottom: '5%' }}>
+            <Button
+              style={styles.getStartedButton}
+              onPress={this.handleGetStarted}
+              textStyle={styles.getStartedButtonText}
+              title="Get Started"
+            />
+          </View>
+          <Button
+            style={styles.getStartedButton}
+            onPress={this.handleLogin}
+            textStyle={styles.getStartedButtonText}
+            title="Log In"
+          />
         </View>
       </View>
     );

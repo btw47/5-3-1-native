@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import UserChart from './UserChart';
 import profileImage from '../../images/anon-user.jpg';
 import * as actions from '../../redux/actions';
 import styles from '../../styles';
@@ -20,16 +21,28 @@ class UserStats extends Component<{}> {
   render() {
     const { user } = this.props.state;
     return (
-      <View style={styles.container}>
-        <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
-        <View>
-          <Text>Name: {user.fullName}</Text>
-          <Text>Weight: {user.weight}</Text>
-          <Text>ONE REP MAXES</Text>
-          <Text>Bench: {user.ormBench}</Text>
-          <Text>Overhead Press: {user.ormOverheadPress}</Text>
-          <Text>Squat: {user.ormSquat}</Text>
-          <Text>Deadlift: {user.ormDeadlift}</Text>
+      <View style={{ marginBottom: '20%' }}>
+        <View style={styles.container}>
+          <Text style={{ fontSize: 30, marginBottom: '10%' }}>
+            Current Stats
+          </Text>
+          {/* <View style={{ width: '50%', height: '50%', resizeMode: 'contain' }}>
+            {this.renderImage()}
+          </View> */}
+          <View style={{ width: '40%', height: '40%' }}>
+            <UserChart />
+          </View>
+          <View>
+            <Text style={styles.userStats}>Name: {user.fullName}</Text>
+            <Text style={styles.userStats}>Weight: {user.weight}</Text>
+            <Text style={styles.userStats}>ONE REP MAXES</Text>
+            <Text style={styles.userStats}>Bench: {user.ormBench}</Text>
+            <Text style={styles.userStats}>
+              Overhead Press: {user.ormOverheadPress}
+            </Text>
+            <Text style={styles.userStats}>Squat: {user.ormSquat}</Text>
+            <Text style={styles.userStats}>Deadlift: {user.ormDeadlift}</Text>
+          </View>
         </View>
       </View>
     );

@@ -41,8 +41,8 @@ class Dashboard extends Component<{}> {
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
             this.props.fetchTodaysWorkout(thisUser.uid);
-            // this.props.fetchOldStats(thisUser);
-            // this.props.fetchProgress(thisUser);
+            this.props.fetchOldStats(thisUser);
+            this.props.fetchProgress(thisUser);
             this.props.loggedIn();
           }
         });
@@ -69,10 +69,10 @@ class Dashboard extends Component<{}> {
               marginLeft: '3%',
               height: '15%'
             }}>
-            <Logout
+            {/* <Logout
               style={{ flex: 1, position: 'relative', top: '5%' }}
               navigation={this.props.navigation}
-            />
+            /> */}
             <DashboardHeader
               profileImage={state.user.profileImage}
               user={state.user}

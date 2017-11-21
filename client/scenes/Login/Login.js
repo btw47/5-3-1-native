@@ -38,7 +38,7 @@ export default class Login extends Component<{}> {
         console.log('logged in');
       })
       .catch(error => {
-        console.log(error);
+        Alert.alert(error);
         this.setState({ error });
       });
   };
@@ -87,18 +87,23 @@ export default class Login extends Component<{}> {
           onChangeText={value => this.setState({ email: value })}
           placeholder="email"
           keyboardType="email-address"
+          onSubmitEditing={event => {
+            this.refs.Password.focus();
+          }}
         />
         <TextInput
           onChangeText={value => this.setState({ password: value })}
           placeholder="password"
           secureTextEntry={true}
+          ref="Password"
         />
-
-        <Button
-          onPress={() => this.handleLogIn()}
-          title="Log In"
-          color="#787881"
-        />
+        <View style={{ marginTop: '10%' }}>
+          <Button
+            onPress={() => this.handleLogIn()}
+            title="Log In"
+            color="#787881"
+          />
+        </View>
 
         {this.renderError()}
       </View>

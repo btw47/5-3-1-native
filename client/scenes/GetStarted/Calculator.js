@@ -4,13 +4,16 @@ import {
   Text,
   TouchableHighlight,
   View,
-  Button,
   TextInput,
-  Alert
+  Alert,
+  ScrollView,
+  Button
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../redux/actions';
+
+import styles from '../../styles';
 
 class Calculator extends Component<{}> {
   state = { showModal: false, calculated: false };
@@ -82,72 +85,121 @@ class Calculator extends Component<{}> {
   render() {
     console.log('THIS STATE', this.state);
     return (
-      <View style={{ marginTop: 22 }}>
+      <View>
         <Modal
           animationType="slide"
           transparent={false}
           visible={this.state.showModal}
           onRequestClose={() => this.setState({ showModal: false })}>
-          <View>
-            <Text>Bench Press</Text>
-            <TextInput
-              onChangeText={value => this.setState({ BenchWeight: value })}
-              placeholder="Weight (lbs)"
-              keyboardType="numeric"
-            />
-            <TextInput
-              onChangeText={value => this.setState({ BenchReps: value })}
-              placeholder="Reps"
-              keyboardType="numeric"
-            />
-            <Text>Overhead Press</Text>
-            <TextInput
-              onChangeText={value => this.setState({ OverheadWeight: value })}
-              placeholder="Weight (lbs)"
-              keyboardType="numeric"
-            />
-            <TextInput
-              onChangeText={value => this.setState({ OverheadReps: value })}
-              placeholder="Reps"
-              keyboardType="numeric"
-            />
-            <Text>Squats</Text>
-            <TextInput
-              onChangeText={value => this.setState({ SquatWeight: value })}
-              placeholder="Weight (lbs)"
-              keyboardType="numeric"
-            />
-            <TextInput
-              onChangeText={value => this.setState({ SquatReps: value })}
-              placeholder="Reps"
-              keyboardType="numeric"
-            />
-            <Text>Deadlift</Text>
-            <TextInput
-              onChangeText={value => this.setState({ DeadliftWeight: value })}
-              placeholder="Weight (lbs)"
-              keyboardType="numeric"
-            />
-            <TextInput
-              onChangeText={value => this.setState({ DeadliftReps: value })}
-              placeholder="Reps"
-              keyboardType="numeric"
-            />
-            <Button
-              title="Calculate ORM"
-              onPress={() => {
-                this.calculateORM();
-              }}
-            />
-          </View>
+          <ScrollView style={{ marginHorizontal: '1%' }}>
+            <Text style={styles.title}>ORM Calculator</Text>
+            <View>
+              <View>
+                <Text style={styles.calculatorTitle}>Bench Press</Text>
+              </View>
+              <TextInput
+                onChangeText={value => this.setState({ BenchWeight: value })}
+                placeholder="Weight (lbs)"
+                keyboardType="numeric"
+                onSubmitEditing={event => {
+                  this.refs.Two.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value => this.setState({ BenchReps: value })}
+                placeholder="Reps"
+                keyboardType="numeric"
+                ref="Two"
+                onSubmitEditing={event => {
+                  this.refs.Three.focus();
+                }}
+              />
+              <View>
+                <Text style={styles.calculatorTitle}>Overhead Press</Text>
+              </View>
+              <TextInput
+                onChangeText={value => this.setState({ OverheadWeight: value })}
+                placeholder="Weight (lbs)"
+                keyboardType="numeric"
+                ref="Three"
+                onSubmitEditing={event => {
+                  this.refs.Four.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value => this.setState({ OverheadReps: value })}
+                placeholder="Reps"
+                keyboardType="numeric"
+                ref="Four"
+                onSubmitEditing={event => {
+                  this.refs.Five.focus();
+                }}
+              />
+              <View>
+                <Text style={styles.calculatorTitle}>Squats</Text>
+              </View>
+              <TextInput
+                onChangeText={value => this.setState({ SquatWeight: value })}
+                placeholder="Weight (lbs)"
+                keyboardType="numeric"
+                ref="Five"
+                onSubmitEditing={event => {
+                  this.refs.Six.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value => this.setState({ SquatReps: value })}
+                placeholder="Reps"
+                keyboardType="numeric"
+                ref="Six"
+                onSubmitEditing={event => {
+                  this.refs.Seven.focus();
+                }}
+              />
+              <View>
+                <Text style={styles.calculatorTitle}>Deadlift</Text>
+              </View>
+              <TextInput
+                onChangeText={value => this.setState({ DeadliftWeight: value })}
+                placeholder="Weight (lbs)"
+                keyboardType="numeric"
+                ref="Seven"
+                onSubmitEditing={event => {
+                  this.refs.Eight.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value => this.setState({ DeadliftReps: value })}
+                placeholder="Reps"
+                keyboardType="numeric"
+                ref="Eight"
+              />
+              <Button
+                title="Calculate ORM"
+                onPress={() => {
+                  this.calculateORM();
+                }}
+              />
+            </View>
+          </ScrollView>
         </Modal>
 
-        <Button
-          title="ORM CALCULTOR"
+        <View style={{ marginBottom: '10%', marginTop: '10%' }}>
+          <Button
+            title="ORM CALCULTOR"
+            onPress={() => {
+              this.setState({ showModal: true });
+            }}
+          />
+        </View>
+        {/* <Button
+          style={styles.calculatorButton}
           onPress={() => {
             this.setState({ showModal: true });
           }}
-        />
+          textStyle={{ fontSize: 20, width: 200, color: 'white' }}>
+          ORM Calculator
+        </Button> */}
       </View>
     );
   }

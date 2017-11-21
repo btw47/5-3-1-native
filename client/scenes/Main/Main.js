@@ -41,20 +41,23 @@ export default class Main extends Component {
           tabs={[
             {
               page: 'Progress',
-              icon: 'home'
+              icon: 'md-trending-up',
+              iconText: 'Progress'
             },
             {
               page: 'Dashboard',
-              icon: 'notifications',
-              badgeNumber: 11
+              icon: 'home',
+              iconText: 'Dashboard'
             },
             {
               page: 'UpdateProfile',
-              icon: 'home'
+              icon: 'md-calculator',
+              iconText: 'Update Stats'
             },
             {
               page: 'UserStats',
-              icon: 'person'
+              icon: 'ios-stats',
+              iconText: 'Current Stats'
             }
           ]}
         />

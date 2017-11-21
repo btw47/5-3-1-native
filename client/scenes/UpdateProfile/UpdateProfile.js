@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, Alert } from 'react-native';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -53,7 +53,7 @@ class UpdateProfile extends Component<{}> {
   }
 
   static navigationOptions = {
-    title: 'Update Your Stats'
+    title: 'Update'
   };
 
   handleSubmit = () => {
@@ -88,15 +88,19 @@ class UpdateProfile extends Component<{}> {
         .push(userStats)
         .then(() => {
           console.log('Stats Updated');
+        })
+        .then(() => {
+          const { navigate } = this.props.navigation;
+
+          Alert.alert('Stats Updated');
+          navigate('/Dashboard');
         });
     }
   };
 
   render() {
-    console.log('FULL NAME', this.props.state.user.fullName);
-
     return (
-      <View>
+      <View style={{ marginBottom: '20%' }}>
         <Text style={{ fontSize: 30, marginBottom: '10%' }}>
           Update Your Stats
         </Text>
@@ -122,11 +126,13 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ deadliftORM: value })}
           placeholder="Deadlift (lbs)"
         />
-        <Button
-          onPress={() => this.handleSubmit()}
-          title="Update Stats"
-          color="#787881"
-        />
+        <View style={{ marginTop: '5%' }}>
+          <Button
+            onPress={() => this.handleSubmit()}
+            title="Update Stats"
+            color="#787881"
+          />
+        </View>
       </View>
     );
   }

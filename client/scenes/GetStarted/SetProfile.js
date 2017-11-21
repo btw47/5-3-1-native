@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import { View, Text, TextInput, Button, Alert, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -12,7 +12,14 @@ import styles from '../../styles';
 class SetProfile extends Component<{}> {
   constructor() {
     super();
-    this.state = { showModal: false };
+    this.state = {
+      showModal: false,
+      calculatedSquat: '',
+      calculatedOhp: '',
+      calculatedDeadlift: '',
+      calculatedBench: '',
+      calculated: null
+    };
   }
 
   componentWillMount() {
@@ -23,6 +30,22 @@ class SetProfile extends Component<{}> {
         this.props.loggedIn();
       }
     });
+  }
+
+  componentDidUpdate() {
+    if (!this.state.calculated) {
+      if (this.props.state.OneRep.calculatedMax) {
+        if (this.props.state.OneRep.calculatedMax.bench) {
+          const calculatedMax = this.props.state.OneRep.calculatedMax;
+          this.state.calculatedSquat = String(calculatedMax.squat);
+          this.state.calculatedDeadlift = String(calculatedMax.deadlift);
+          this.state.calculatedBench = String(calculatedMax.bench);
+          this.state.calculatedOhp = String(calculatedMax.overhead);
+
+          this.setState({ calculated: true });
+        }
+      }
+    }
   }
 
   weeklyTemplate = inputValues => {
@@ -123,64 +146,90 @@ class SetProfile extends Component<{}> {
   };
 
   render() {
-    if (this.props.state.OneRep.calculatedMax) {
-      if (this.props.state.OneRep.calculatedMax.bench) {
-        const calculatedMax = this.props.state.OneRep.calculatedMax;
-        this.squat.value = calculatedMax.squat;
-        this.deadlift.value = calculatedMax.deadlift;
-        this.bench.value = calculatedMax.bench;
-        this.overheadPress.value = calculatedMax.overhead;
-      }
-    }
-
+    console.log('SET PROFILE STATE', this.state);
     return (
-      <View>
-        <Text style={styles.title}>Enter your information below</Text>
+      <ScrollView style={{ marginHorizontal: '2%' }}>
         <View>
-          <TextInput
-            onChangeText={value => this.setState({ fullName: value })}
-            placeholder="Username"
-          />
-          <TextInput
-            onChangeText={value => this.setState({ weight: value })}
-            placeholder="Current Weight (lbs)"
-            keyboardType="numeric"
-          />
-          <View>
-            <Text>What are your current one rep maxes?</Text>
-            <Text style={{ color: 'blue' }}>
-              dont know your current maxes? use our calculator!
-            </Text>
-            <Calculator />
+          <Text style={{ fontSize: 35, textAlign: 'center', marginTop: '5%' }}>
+            Tell us about yourself
+          </Text>
+          <View style={{ marginTop: '5%' }}>
             <TextInput
-              onChangeText={value => this.setState({ bench: value })}
-              placeholder="Bench Press (lbs)"
-              keyboardType="numeric"
-              ref={ref => (this.bench = ref)}
+              onChangeText={value => this.setState({ fullName: value })}
+              placeholder="Username"
+              onSubmitEditing={event => {
+                this.refs.Weight.focus();
+              }}
             />
             <TextInput
-              onChangeText={value => this.setState({ overheadPress: value })}
-              placeholder="Overhead Press (lbs)"
+              onChangeText={value => this.setState({ weight: value })}
+              placeholder="Current Weight (lbs)"
+              ref="Weight"
               keyboardType="numeric"
-              ref={ref => (this.overheadPress = ref)}
+              onSubmitEditing={event => {
+                this.bench.focus();
+              }}
             />
-            <TextInput
-              onChangeText={value => this.setState({ deadlift: value })}
-              placeholder="Deadlift (lbs)"
-              keyboardType="numeric"
-              ref={ref => (this.deadlift = ref)}
-            />
-            <TextInput
-              onChangeText={value => this.setState({ squat: value })}
-              placeholder="Squat (lbs)"
-              keyboardType="numeric"
-              ref={ref => (this.squat = ref)}
+            <View style={{ marginTop: '5%' }}>
+              <Text style={{ fontSize: 22, textAlign: 'center' }}>
+                What are your current one rep maxes?
+              </Text>
+              {this.state.calculated && (
+                <View style={{ marginTop: '5%' }}>
+                  <TextInput
+                    onChangeText={value =>
+                      this.setState({ calculatedBench: value })}
+                    placeholder="Bench Press (lbs)"
+                    keyboardType="numeric"
+                    value={this.state.calculatedBench}
+                    ref={ref => (this.bench = ref)}
+                    onSubmitEditing={event => {
+                      this.overheadPress.focus();
+                    }}
+                  />
+                  <TextInput
+                    onChangeText={value =>
+                      this.setState({ calculatedOhp: value })}
+                    placeholder="Overhead Press (lbs)"
+                    keyboardType="numeric"
+                    value={this.state.calculatedOhp}
+                    ref={ref => (this.overheadPress = ref)}
+                    onSubmitEditing={event => {
+                      this.deadlift.focus();
+                    }}
+                  />
+                  <TextInput
+                    onChangeText={value =>
+                      this.setState({ calculatedSquat: value })}
+                    placeholder="Squat (lbs)"
+                    keyboardType="numeric"
+                    value={this.state.calculatedSquat}
+                    ref={ref => (this.squat = ref)}
+                  />
+                  <TextInput
+                    onChangeText={value =>
+                      this.setState({ calculatedDeadlift: value })}
+                    placeholder="Deadlift (lbs)"
+                    keyboardType="numeric"
+                    ref={ref => (this.deadlift = ref)}
+                    value={this.state.calculatedDeadlift}
+                    onSubmitEditing={event => {
+                      this.squat.focus();
+                    }}
+                  />
+                </View>
+              )}
+              <Calculator />
+            </View>
+
+            <Button
+              title="set profile"
+              onPress={() => this.handleSubmit()}
+              style={{ marginBottom: '5%' }}
             />
           </View>
-
-          <Button title="set profile" onPress={() => this.handleSubmit()} />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
