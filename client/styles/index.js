@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     textAlign: 'center'
     // marginBottom: '50%'
   },
+  dashboardTitle: {
+    fontSize: 40,
+    textAlign: 'center'
+    // marginBottom: '50%'
+  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -45,8 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '15%',
-    marginTop: '5%'
+    marginBottom: '10%'
   },
   containerWebView: {
     flex: 1,
@@ -83,6 +87,10 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     borderRadius: 22,
     margin: '5%'
+  },
+  userStats: {
+    marginTop: 0,
+    fontSize: 20
   }
 });
 

@@ -26,14 +26,14 @@ export default class WorkoutCard extends Component {
     if (this.state.liftIndex > 0 && this.state.liftIndex < 3) {
       return (
         <View style={styles.sideBySideButtons}>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, position: 'absolute', right: '50%' }}>
             <Button
               title="<"
               onPress={() =>
                 this.setState({ liftIndex: this.state.liftIndex - 1 })}
             />
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, position: 'absolute', left: '50%' }}>
             <Button
               title=">"
               onPress={() =>
@@ -74,55 +74,91 @@ export default class WorkoutCard extends Component {
 
   renderTitle = () => {
     const lifts = ['Bench', 'Overhead Press', 'Squat', 'Deadlift'];
-    return <Text>{lifts[this.state.liftIndex]}</Text>;
+    return <Text style={{ fontSize: 30 }}>{lifts[this.state.liftIndex]}</Text>;
   };
 
   render() {
     return (
-      <View style={{ height: '75%' }}>
+      <View style={{ height: '100%' }}>
         <Card>
-          {/* <CardTitle> */}
-          <Text style={styles.title}>Today's Workout</Text>
-          {/* </CardTitle> */}
-          <CardContent>
-            {this.renderTitle()}
-            {this.props.templates &&
-              this.state.liftIndex === 0 &&
-              this.props.templates.benchTemplate[0].map(a => (
-                <View key={a}>
-                  <Text>{a}</Text>
+          <View
+            style={{
+              padding: '10%'
+            }}>
+            {/* <CardTitle> */}
+            <Text style={styles.title}>Today's Workout</Text>
+            {/* </CardTitle> */}
+            <View style={{ alignItems: 'center' }}>
+              <CardContent>
+                <View style={{ alignItems: 'center' }}>
+                  {this.renderTitle()}
+                  {this.props.templates &&
+                    this.state.liftIndex === 0 &&
+                    this.props.templates.benchTemplate[0].map(a => (
+                      <View key={a}>
+                        <Text style={{ fontSize: 20 }}>
+                          {a.split(' x')[0] +
+                            'lbs x' +
+                            a.split(' x')[1] +
+                            ' reps'}
+                        </Text>
+                      </View>
+                    ))}
+                  {this.props.templates &&
+                    this.state.liftIndex === 1 &&
+                    this.props.templates.ohpTemplate[0].map(a => (
+                      <View key={a}>
+                        <Text style={{ fontSize: 20 }}>
+                          {a.split(' x')[0] +
+                            'lbs x' +
+                            a.split(' x')[1] +
+                            ' reps'}
+                        </Text>
+                      </View>
+                    ))}
+                  {this.props.templates &&
+                    this.state.liftIndex === 2 &&
+                    this.props.templates.squatTemplate[0].map(a => (
+                      <View>
+                        <Text style={{ fontSize: 20 }} key={a}>
+                          {a.split(' x')[0] +
+                            'lbs x' +
+                            a.split(' x')[1] +
+                            ' reps'}
+                        </Text>
+                      </View>
+                    ))}
+                  {this.props.templates &&
+                    this.state.liftIndex === 3 &&
+                    this.props.templates.deadliftTemplate[0].map(a => (
+                      <View>
+                        <Text style={{ fontSize: 20 }} key={a}>
+                          {a.split(' x')[0] +
+                            'lbs x' +
+                            a.split(' x')[1] +
+                            ' reps'}
+                        </Text>
+                      </View>
+                    ))}
+                  <View
+                    style={{
+                      height: '10%',
+                      marginTop: '5%',
+                      marginBottom: '5%'
+                    }}>
+                    {this.renderButtons()}
+                  </View>
                 </View>
-              ))}
-            {this.props.templates &&
-              this.state.liftIndex === 1 &&
-              this.props.templates.ohpTemplate[0].map(a => (
-                <View>
-                  <Text key={a}>{a}</Text>
-                </View>
-              ))}
-            {this.props.templates &&
-              this.state.liftIndex === 2 &&
-              this.props.templates.squatTemplate[0].map(a => (
-                <View>
-                  <Text key={a}>{a}</Text>
-                </View>
-              ))}
-            {this.props.templates &&
-              this.state.liftIndex === 3 &&
-              this.props.templates.deadliftTemplate[0].map(a => (
-                <View>
-                  <Text key={a}>{a}</Text>
-                </View>
-              ))}
-            <View style={{ height: '10%' }}>{this.renderButtons()}</View>
-          </CardContent>
-          <CardAction>
-            <Button
-              style={styles.button}
-              onPress={() => this.handleRedirect()}
-              title="start your workout"
-            />
-          </CardAction>
+              </CardContent>
+              <CardAction>
+                <Button
+                  style={styles.button}
+                  onPress={() => this.handleRedirect()}
+                  title="start your workout"
+                />
+              </CardAction>
+            </View>
+          </View>
         </Card>
       </View>
     );
