@@ -41,8 +41,8 @@ class Dashboard extends Component<{}> {
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
             this.props.fetchTodaysWorkout(thisUser.uid);
-            // this.props.fetchOldStats(thisUser);
-            // this.props.fetchProgress(thisUser);
+            this.props.fetchOldStats(thisUser);
+            this.props.fetchProgress(thisUser);
             this.props.loggedIn();
           }
         });

@@ -74,6 +74,93 @@ export function fetchUser(thisUser) {
   };
 }
 
+//-----FETCH OLD STATS-----
+export function fetchOldStats(thisUser, time) {
+  return dispatch => {
+    if (thisUser != null) {
+      var uid = thisUser.uid;
+    }
+
+    firebaseDb.ref('users/' + uid + '/user/').on('value', snapshot => {
+      const firebaseOutput = snapshot.val();
+
+      let pushList = [];
+      for (let prop in firebaseOutput) {
+        pushList.push(prop);
+      }
+
+      const uploadList = [];
+      for (let i = 0; i < pushList.length; i++) {
+        if (firebaseOutput[pushList[i]].weight) {
+          const date = firebaseOutput[pushList[i]].date;
+          uploadList[date] = firebaseOutput[pushList[i]].oneRepMax;
+          uploadList.push(firebaseOutput[pushList[i]]);
+        }
+      }
+
+      let firstUpload = uploadList[0];
+
+      dispatch({
+        type: actionTypes.FETCH_OLD_STATS,
+        userID: uid,
+        fullName: firstUpload.fullName,
+        weight: firstUpload.weight,
+        date: firstUpload.date,
+        ormBench: firstUpload.oneRepMax['benchORM'],
+        ormDeadlift: firstUpload.oneRepMax['deadliftORM'],
+        ormOverheadPress: firstUpload.oneRepMax['overheadPressORM'],
+        ormSquat: firstUpload.oneRepMax['squatORM']
+      });
+    });
+  };
+}
+
+//-----FETCH PROGRESS-----
+export const fetchProgress = thisUser => {
+  return dispatch => {
+    if (thisUser != null) {
+      var uid = thisUser.uid;
+    }
+
+    firebaseDb.ref('users/' + uid + '/user/').on('value', snapshot => {
+      const firebaseOutput = snapshot.val();
+
+      let pushList = [];
+      for (let prop in firebaseOutput) {
+        pushList.push(prop);
+      }
+
+      const uploadList = [];
+      for (let i = 0; i < pushList.length; i++) {
+        if (firebaseOutput[pushList[i]].weight) {
+          // const date = firebaseOutput[pushList[i]].date;
+          // uploadList[date] = firebaseOutput[pushList[i]].oneRepMax;
+          uploadList.push(firebaseOutput[pushList[i]]);
+        }
+      }
+
+      const progressData = uploadList.map(a => {
+        const smallDate = a.date.split(' ').slice(1, 3);
+        const joinDate = smallDate.join(' ');
+        const fullDate = `${joinDate}, ${a.date.split(' ').slice(3, 4)}`;
+        const rawDat = {};
+        rawDat['name'] = fullDate;
+        rawDat['Bench (ORM)'] = a.oneRepMax['benchORM'];
+        rawDat['Squat (ORM)'] = a.oneRepMax['squatORM'];
+        rawDat['Overhead Press (ORM)'] = a.oneRepMax['overheadPressORM'];
+        rawDat['Deadlift (ORM)'] = a.oneRepMax['deadliftORM'];
+        rawDat['Weight'] = a.weight;
+        return rawDat;
+      });
+
+      dispatch({
+        type: actionTypes.FETCH_PROGRESS,
+        payload: progressData
+      });
+    });
+  };
+};
+
 //-----FETCH TODAYS WORKOUT-----
 export const fetchTodaysWorkout = uid => {
   return dispatch => {
