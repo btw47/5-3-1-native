@@ -7,6 +7,8 @@ import {
   VictoryChart
 } from 'victory-native';
 
+// import ProgressMenu from './ProgressMenu';
+
 export default class DetailedProgress extends Component<{}> {
   render() {
     console.log('DETAILED PROGRESS PROPS', this.props);
@@ -24,6 +26,7 @@ export default class DetailedProgress extends Component<{}> {
 
     return (
       <View>
+        {/* <ProgressMenu /> */}
         <VictoryChart>
           <VictoryLine interpolation="natural" data={bench} />
         </VictoryChart>

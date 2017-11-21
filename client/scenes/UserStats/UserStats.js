@@ -28,7 +28,7 @@ class UserStats extends Component<{}> {
           {/* <View style={{ width: '50%', height: '50%', resizeMode: 'contain' }}>
             {this.renderImage()}
           </View> */}
-          <View style={{ width: '40%', height: '40%', resizeMode: 'contain' }}>
+          <View style={{ width: '40%', height: '40%' }}>
             <Text style={styles.title}>
               EITHER USER IMAGE OR GRAPHS WILL GO HERE
             </Text>

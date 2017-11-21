@@ -47,14 +47,6 @@ class Progress extends Component<{}> {
     });
   }
 
-  //   data={[
-  //   { x: 1, y: 2 },
-  //   { x: 2, y: 3 },
-  //   { x: 3, y: 5 },
-  //   { x: 4, y: 4 },
-  //   { x: 5, y: 7 }
-  // ]}
-
   renderProgress = () => {
     let progressList = [];
     if (this.props.state.user.progress) {

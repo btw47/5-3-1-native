@@ -99,8 +99,6 @@ class UpdateProfile extends Component<{}> {
   };
 
   render() {
-    console.log('FULL NAME', this.props.state.user.fullName);
-
     return (
       <View style={{ marginBottom: '20%' }}>
         <Text style={{ fontSize: 30, marginBottom: '10%' }}>

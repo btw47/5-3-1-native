@@ -41,18 +41,22 @@ export default class Main extends Component {
           tabs={[
             {
               page: 'Progress',
+              icon: 'md-trending-up',
               iconText: 'Progress'
             },
             {
               page: 'Dashboard',
+              icon: 'home',
               iconText: 'Dashboard'
             },
             {
               page: 'UpdateProfile',
+              icon: 'md-calculator',
               iconText: 'Update Stats'
             },
             {
               page: 'UserStats',
+              icon: 'ios-stats',
               iconText: 'Current Stats'
             }
           ]}
