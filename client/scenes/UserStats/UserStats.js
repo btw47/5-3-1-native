@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, Modal, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import UserChart from './UserChart';
+import UserStatsModal from './UserStatsModal';
 import profileImage from '../../images/anon-user.jpg';
 import * as actions from '../../redux/actions';
 import styles from '../../styles';
@@ -20,6 +20,7 @@ class UserStats extends Component<{}> {
 
   render() {
     const { user } = this.props.state;
+
     return (
       <View style={{ marginBottom: '20%' }}>
         <View style={styles.container}>
@@ -29,9 +30,7 @@ class UserStats extends Component<{}> {
           {/* <View style={{ width: '50%', height: '50%', resizeMode: 'contain' }}>
             {this.renderImage()}
           </View> */}
-          <View style={{ width: '40%', height: '40%' }}>
-            <UserChart />
-          </View>
+
           <View>
             <Text style={styles.userStats}>Name: {user.fullName}</Text>
             <Text style={styles.userStats}>Weight: {user.weight}</Text>
@@ -44,6 +43,7 @@ class UserStats extends Component<{}> {
             <Text style={styles.userStats}>Deadlift: {user.ormDeadlift}</Text>
           </View>
         </View>
+        <UserStatsModal user={user} />
       </View>
     );
   }

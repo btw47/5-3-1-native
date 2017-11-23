@@ -31,6 +31,13 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     position: 'absolute'
   },
+  chartStyle: {
+    flex: 1,
+    position: 'absolute',
+    marginTop: '10%',
+    alignItems: 'center'
+    // flexDirection: 'row',
+  },
   instructions: {
     textAlign: 'center',
     color: '#333333',
