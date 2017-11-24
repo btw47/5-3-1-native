@@ -4,7 +4,8 @@ import {
   VictoryLine,
   VictoryAxis,
   VictoryTheme,
-  VictoryChart
+  VictoryChart,
+  VictoryArea
 } from 'victory-native';
 
 import styles from '../../styles';
@@ -18,10 +19,6 @@ export default class DetailedProgress extends Component<{}> {
   }
 
   componentDidMount() {
-    let bench = [],
-      ohp,
-      deadlift,
-      squat;
     const exercises = [
       'Bench (ORM)',
       'Overhead Press (ORM)',
@@ -69,51 +66,71 @@ export default class DetailedProgress extends Component<{}> {
     return (
       <ScrollView>
         <Text
-          style={{ textAlign: 'center', fontSize: 32, marginBottom: '15%' }}>
+          style={{
+            textAlign: 'center',
+            fontSize: 32,
+            marginTop: '10%'
+          }}>
           Your ORM Progress
         </Text>
-        <Text style={{ textAlign: 'center', fontSize: 20 }}>Bench</Text>
-        <VictoryChart
-          animate={{
-            duration: 2000,
-            onLoad: { duration: 1000 }
-          }}>
-          {this.state.renderedBench && (
-            <VictoryLine
-              interpolation="natural"
-              data={this.state.renderedBench}
-            />
-          )}
-        </VictoryChart>
-        <Text style={{ textAlign: 'center', fontSize: 20 }}>
-          Overhead Press
-        </Text>
-        <VictoryChart>
-          {this.state.renderedOhp && (
-            <VictoryLine
-              interpolation="natural"
-              data={this.state.renderedOhp}
-            />
-          )}
-        </VictoryChart>
-        <Text style={{ textAlign: 'center', fontSize: 20 }}>Squats</Text>
-        <VictoryChart>
-          {this.state.renderedSquat && (
-            <VictoryLine
-              interpolation="natural"
-              data={this.state.renderedSquat}
-            />
-          )}
-        </VictoryChart>
-        <Text style={{ textAlign: 'center', fontSize: 20 }}>Deadlift</Text>
-        <VictoryChart>
-          {this.state.renderedDeadlift && (
-            <VictoryLine
-              interpolation="natural"
-              data={this.state.renderedDeadlift}
-            />
-          )}
-        </VictoryChart>
+        <View style={{ paddingTop: '10%' }}>
+          <Text style={{ textAlign: 'center', fontSize: 28 }}>Bench</Text>
+          <VictoryChart>
+            {this.state.renderedBench && (
+              <VictoryArea
+                interpolation="natural"
+                data={this.state.renderedBench}
+                style={{
+                  data: { fill: '#cc4b35' }
+                }}
+              />
+            )}
+          </VictoryChart>
+        </View>
+        <View style={{ paddingTop: '10%' }}>
+          <Text style={{ textAlign: 'center', fontSize: 28 }}>
+            Overhead Press
+          </Text>
+          <VictoryChart>
+            {this.state.renderedOhp && (
+              <VictoryArea
+                interpolation="natural"
+                data={this.state.renderedOhp}
+                style={{
+                  data: { fill: '#22ad3e' }
+                }}
+              />
+            )}
+          </VictoryChart>
+        </View>
+        <View style={{ paddingTop: '10%' }}>
+          <Text style={{ textAlign: 'center', fontSize: 28 }}>Squats</Text>
+          <VictoryChart>
+            {this.state.renderedSquat && (
+              <VictoryArea
+                interpolation="natural"
+                data={this.state.renderedSquat}
+                style={{
+                  data: { fill: '#11c1a7' }
+                }}
+              />
+            )}
+          </VictoryChart>
+        </View>
+        <View style={{ paddingTop: '10%' }}>
+          <Text style={{ textAlign: 'center', fontSize: 28 }}>Deadlift</Text>
+          <VictoryChart>
+            {this.state.renderedDeadlift && (
+              <VictoryArea
+                interpolation="natural"
+                data={this.state.renderedDeadlift}
+                style={{
+                  data: { fill: '#6b42f4' }
+                }}
+              />
+            )}
+          </VictoryChart>
+        </View>
       </ScrollView>
     );
   }
