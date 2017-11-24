@@ -19,7 +19,8 @@ export default class UserStatsModal extends Component<{}> {
           </View>
           <View style={{ marginBottom: '20%' }}>
             <Button
-              title="I agree"
+              title="Done"
+              style={{ position: 'absolute', bottom: '0%' }}
               onPress={() => this.setState({ showModal: false })}
             />
           </View>

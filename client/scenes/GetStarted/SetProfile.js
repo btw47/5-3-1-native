@@ -86,19 +86,19 @@ class SetProfile extends Component<{}> {
 
   handleSubmit = () => {
     const {
-      deadlift,
-      squat,
-      overheadPress,
-      bench,
+      calculatedDeadlift,
+      calculatedSquat,
+      calculatedOhp,
+      calculatedBench,
       fullName,
       weight
     } = this.state;
 
     if (
-      !deadlift ||
-      !squat ||
-      !overheadPress ||
-      !bench ||
+      !calculatedDeadlift ||
+      !calculatedSquat ||
+      !calculatedOhp ||
+      !calculatedBench ||
       !fullName ||
       !weight
     ) {
@@ -109,21 +109,11 @@ class SetProfile extends Component<{}> {
         var uid = thisUser.uid;
       }
 
-      handleOneRepMax = event => {
-        this.setState({
-          oneRepMax: {
-            squatORM: this.refs.squat.value,
-            deadliftORM: this.refs.deadlift.value,
-            benchORM: this.refs.bench.value,
-            overheadPressORM: this.refs.ohp.value
-          }
-        });
-      };
       const oneRepMax = {
-        squatORM: squat,
-        deadliftORM: deadlift,
-        benchORM: bench,
-        overheadPressORM: overheadPress
+        squatORM: calculatedSquat,
+        deadliftORM: calculatedDeadlift,
+        benchORM: calculatedBench,
+        overheadPressORM: calculatedOhp
       };
 
       const date = Date();
@@ -145,6 +135,16 @@ class SetProfile extends Component<{}> {
     }
   };
 
+  handleOneRepMax = event => {
+    this.setState({
+      oneRepMax: {
+        squatORM: this.refs.squat.value,
+        deadliftORM: this.refs.deadlift.value,
+        benchORM: this.refs.bench.value,
+        overheadPressORM: this.refs.ohp.value
+      }
+    });
+  };
   render() {
     console.log('SET PROFILE STATE', this.state);
     return (
@@ -167,59 +167,102 @@ class SetProfile extends Component<{}> {
               ref="Weight"
               keyboardType="numeric"
               onSubmitEditing={event => {
-                this.bench.focus();
+                this.refs.bench.focus();
               }}
             />
             <View style={{ marginTop: '5%' }}>
               <Text style={{ fontSize: 22, textAlign: 'center' }}>
                 What are your current one rep maxes?
               </Text>
-              {this.state.calculated && (
+              {/* {this.state.calculated && (
                 <View style={{ marginTop: '5%' }}>
                   <TextInput
-                    onChangeText={value =>
-                      this.setState({ calculatedBench: value })}
-                    placeholder="Bench Press (lbs)"
-                    keyboardType="numeric"
-                    value={this.state.calculatedBench}
-                    ref={ref => (this.bench = ref)}
-                    onSubmitEditing={event => {
-                      this.overheadPress.focus();
-                    }}
+                onChangeText={value =>
+                this.setState({ calculatedBench: value })}
+                placeholder="Bench Press (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedBench}
+                ref={ref => (this.bench = ref)}
+                onSubmitEditing={event => {
+                this.overheadPress.focus();
+                }}
                   />
                   <TextInput
-                    onChangeText={value =>
-                      this.setState({ calculatedOhp: value })}
-                    placeholder="Overhead Press (lbs)"
-                    keyboardType="numeric"
-                    value={this.state.calculatedOhp}
-                    ref={ref => (this.overheadPress = ref)}
-                    onSubmitEditing={event => {
-                      this.deadlift.focus();
-                    }}
+                onChangeText={value =>
+                this.setState({ calculatedOhp: value })}
+                placeholder="Overhead Press (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedOhp}
+                ref={ref => (this.overheadPress = ref)}
+                onSubmitEditing={event => {
+                this.deadlift.focus();
+                }}
                   />
                   <TextInput
-                    onChangeText={value =>
-                      this.setState({ calculatedSquat: value })}
-                    placeholder="Squat (lbs)"
-                    keyboardType="numeric"
-                    value={this.state.calculatedSquat}
-                    ref={ref => (this.squat = ref)}
+                onChangeText={value =>
+                this.setState({ calculatedSquat: value })}
+                placeholder="Squat (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedSquat}
+                ref={ref => (this.squat = ref)}
                   />
                   <TextInput
-                    onChangeText={value =>
-                      this.setState({ calculatedDeadlift: value })}
-                    placeholder="Deadlift (lbs)"
-                    keyboardType="numeric"
-                    ref={ref => (this.deadlift = ref)}
-                    value={this.state.calculatedDeadlift}
-                    onSubmitEditing={event => {
-                      this.squat.focus();
-                    }}
+                onChangeText={value =>
+                this.setState({ calculatedDeadlift: value })}
+                placeholder="Deadlift (lbs)"
+                keyboardType="numeric"
+                ref={ref => (this.deadlift = ref)}
+                value={this.state.calculatedDeadlift}
+                onSubmitEditing={event => {
+                this.squat.focus();
+                }}
                   />
                 </View>
-              )}
-              <Calculator />
+              )} */}
+              {/* <Calculator /> */}
+            </View>
+
+            <View style={{ marginTop: '5%' }}>
+              <TextInput
+                onChangeText={value =>
+                  this.setState({ calculatedBench: value })}
+                placeholder="Bench Press (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedBench}
+                ref="bench"
+                onSubmitEditing={event => {
+                  this.refs.ohp.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value => this.setState({ calculatedOhp: value })}
+                placeholder="Overhead Press (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedOhp}
+                ref="ohp"
+                onSubmitEditing={event => {
+                  this.refs.squat.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value =>
+                  this.setState({ calculatedSquat: value })}
+                placeholder="Squat (lbs)"
+                keyboardType="numeric"
+                value={this.state.calculatedSquat}
+                ref="squat"
+                onSubmitEditing={event => {
+                  this.refs.deadlift.focus();
+                }}
+              />
+              <TextInput
+                onChangeText={value =>
+                  this.setState({ calculatedDeadlift: value })}
+                placeholder="Deadlift (lbs)"
+                keyboardType="numeric"
+                ref="deadlift"
+                value={this.state.calculatedDeadlift}
+              />
             </View>
 
             <Button
