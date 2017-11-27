@@ -8,6 +8,8 @@ import {
   CardContent,
   CardAction
 } from 'react-native-card-view';
+import ProgressCircle from 'react-native-progress-circle';
+
 import styles from '../../styles';
 
 export default class Lift extends Component<{}> {
@@ -27,15 +29,31 @@ export default class Lift extends Component<{}> {
     );
   };
 
-  handleComplete = event => {
-    console.log('HANDLE COMPLETE', this.A.value);
+  handleCompleted = event => {
+    console.log('EX', event);
+
+    let newCompleted = this.state.completed;
+
+    if (event.checked) {
+      newCompleted.push(event.label);
+    } else {
+      newCompleted = newCompleted.filter(a => {
+        console.log('A', a);
+        return a != event.label;
+      });
+    }
+
+    this.setState({
+      completed: newCompleted
+    });
+
+    this.props.liftByLift(newCompleted);
   };
 
   render() {
     const { completed } = this.props;
     console.log('LIFT PROPS', this.props);
     console.log('LIFT STATE', this.state);
-    console.log('TEST', this.A.value);
     return (
       <Card>
         <CardContent>
@@ -44,9 +62,10 @@ export default class Lift extends Component<{}> {
             style={{
               flex: 1,
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              height: '10%'
             }}>
-            <Image
+            {/* <Image
               source={require('../../images/bench.gif')}
               style={{
                 flex: 1,
@@ -56,7 +75,16 @@ export default class Lift extends Component<{}> {
                 position: 'absolute',
                 marginTop: '20%'
               }}
-            />
+            /> */}
+            <ProgressCircle
+              percent={this.props.percent}
+              radius={50}
+              borderWidth={8}
+              color="#3399FF"
+              shadowColor="#999"
+              bgColor="#fff">
+              <Text style={{ fontSize: 18 }}>{`${this.props.percent}%`}</Text>
+            </ProgressCircle>
           </View>
           <View
             style={{
@@ -73,6 +101,7 @@ export default class Lift extends Component<{}> {
                     a.split(' x')[0] + 'lbs x' + a.split(' x')[1] + ' reps'
                   }
                   key={a}
+                  onChange={event => this.handleCompleted(event)}
                   checkedImage={require('../../images/checked.png')}
                   uncheckedImage={require('../../images/unchecked.png')}
                 />
@@ -85,6 +114,7 @@ export default class Lift extends Component<{}> {
                     a.split(' x')[0] + 'lbs x' + a.split(' x')[1] + ' reps'
                   }
                   key={a}
+                  onChange={event => this.handleCompleted(event)}
                   checkedImage={require('../../images/checked.png')}
                   uncheckedImage={require('../../images/unchecked.png')}
                 />
@@ -97,6 +127,7 @@ export default class Lift extends Component<{}> {
                     a.split(' x')[0] + 'lbs x' + a.split(' x')[1] + ' reps'
                   }
                   key={a}
+                  onChange={event => this.handleCompleted(event)}
                   checkedImage={require('../../images/checked.png')}
                   uncheckedImage={require('../../images/unchecked.png')}
                 />
@@ -109,6 +140,7 @@ export default class Lift extends Component<{}> {
                     a.split(' x')[0] + 'lbs x' + a.split(' x')[1] + ' reps'
                   }
                   key={a}
+                  onChange={event => this.handleCompleted(event)}
                   checkedImage={require('../../images/checked.png')}
                   uncheckedImage={require('../../images/unchecked.png')}
                 />

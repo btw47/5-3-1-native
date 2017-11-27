@@ -15,6 +15,7 @@
 		"react-native-card-view": "^0.0.3",
 		"react-native-circular-action-menu": "^0.4.0",
 		"react-native-modest-checkbox": "^2.0.0",
+		"react-native-progress-circle": "^2.0.0",
 		"react-native-radio-buttons": "^1.0.0",
 		"react-native-svg": "^6.0.0",
 		"react-native-tabbar-bottom": "^1.0.4",
