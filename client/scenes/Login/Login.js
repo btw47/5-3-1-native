@@ -10,8 +10,8 @@ export default class Login extends Component<{}> {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: ''
+      email: null,
+      password: null
     };
   }
 
@@ -99,7 +99,11 @@ export default class Login extends Component<{}> {
         />
         <View style={{ marginTop: '10%' }}>
           <Button
-            onPress={() => this.handleLogIn()}
+            onPress={() => {
+              if (this.state.email && this.state.password) {
+                this.handleLogIn();
+              }
+            }}
             title="Log In"
             color="#787881"
           />

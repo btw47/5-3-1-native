@@ -94,6 +94,7 @@ export default class Lift extends Component<{}> {
               marginBottom: '10%'
             }}>
             {this.props.templates &&
+              this.props.percent < 25 &&
               this.props.liftIndex === 0 &&
               this.props.templates.benchTemplate[0].map(a => (
                 <CheckBox
@@ -107,6 +108,7 @@ export default class Lift extends Component<{}> {
                 />
               ))}
             {this.props.templates &&
+              this.props.percent < 50 &&
               this.props.liftIndex === 1 &&
               this.props.templates.ohpTemplate[0].map(a => (
                 <CheckBox
@@ -120,6 +122,7 @@ export default class Lift extends Component<{}> {
                 />
               ))}
             {this.props.templates &&
+              this.props.percent < 75 &&
               this.props.liftIndex === 2 &&
               this.props.templates.squatTemplate[0].map(a => (
                 <CheckBox
@@ -133,6 +136,7 @@ export default class Lift extends Component<{}> {
                 />
               ))}
             {this.props.templates &&
+              this.props.percent < 100 &&
               this.props.liftIndex === 3 &&
               this.props.templates.deadliftTemplate[0].map(a => (
                 <CheckBox

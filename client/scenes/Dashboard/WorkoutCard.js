@@ -119,7 +119,7 @@ export default class WorkoutCard extends Component {
                   {this.props.templates &&
                     this.state.liftIndex === 2 &&
                     this.props.templates.squatTemplate[0].map(a => (
-                      <View>
+                      <View key={a}>
                         <Text style={{ fontSize: 20 }} key={a}>
                           {a.split(' x')[0] +
                             'lbs x' +
@@ -131,7 +131,7 @@ export default class WorkoutCard extends Component {
                   {this.props.templates &&
                     this.state.liftIndex === 3 &&
                     this.props.templates.deadliftTemplate[0].map(a => (
-                      <View>
+                      <View key={a}>
                         <Text style={{ fontSize: 20 }} key={a}>
                           {a.split(' x')[0] +
                             'lbs x' +

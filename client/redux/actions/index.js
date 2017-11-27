@@ -285,7 +285,7 @@ export const fetchProfileImage = uid => {
 export const liftByLift = completed => {
   return dispatch => {
     const numCompleted = completed.length;
-    const percent = (completed.length / 12 * 100).toFixed(2);
+    const percent = parseInt((completed.length / 12 * 100).toFixed(2));
 
     dispatch({
       type: actionTypes.LIFT_BY_LIFT,
