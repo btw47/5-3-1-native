@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Modal, Text, Button } from 'react-native';
 import firebase from 'firebase';
-import { VictoryLine } from 'victory-native';
+import { VictoryChart, VictoryArea } from 'victory-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -47,6 +47,33 @@ class Progress extends Component<{}> {
     });
   }
 
+  componentDidMount() {
+    const exercises = ['Weight'];
+
+    let renderedWeight = [];
+
+    for (let i = 0; i < exercises.length; i++) {
+      let count = 0;
+      exercises[i] = this.props.state.user.progress.map(a => {
+        const lift = {};
+        const obj = {};
+        // obj['x'] = count;
+        // obj['x'] = a['name'];
+        obj['x'] = count;
+        obj['y'] = parseInt(a[exercises[i]]);
+        count += 1;
+        if (exercises[i] === 'Weight') {
+          renderedWeight.push(obj);
+        }
+      });
+    }
+
+    this.setState({
+      renderedWeight,
+      rendered: true
+    });
+  }
+
   renderProgress = () => {
     let progressList = [];
     if (this.props.state.user.progress) {
@@ -59,10 +86,8 @@ class Progress extends Component<{}> {
   };
 
   render() {
-    console.log('PROGRESS', this.props);
     return (
-      <View style={{ marginTop: 10 }}>
-        <Text style={{ fontSize: 30, textAlign: 'center' }}>PROGRESS</Text>
+      <View style={{ marginTop: '5%' }}>
         <Modal
           animationType="slide"
           transparent={false}
@@ -72,9 +97,22 @@ class Progress extends Component<{}> {
             <DetailedProgress progress={this.renderProgress()} />
           )}
         </Modal>
-        <VictoryLine interpolation="natural" />
+        <View>
+          <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
+          <VictoryChart>
+            {this.state.renderedWeight && (
+              <VictoryArea
+                interpolation="natural"
+                style={{
+                  data: { fill: '#ed8c42' }
+                }}
+                data={this.state.renderedWeight}
+              />
+            )}
+          </VictoryChart>
+        </View>
         <Button
-          title="visualize progress"
+          title="see more stats"
           onPress={() => {
             this.setState({ showModal: true });
           }}

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { VictoryChart, VictoryBar, VictoryTheme } from 'victory-native';
+import {
+  VictoryChart,
+  VictoryBar,
+  VictoryTheme,
+  VictoryAxis
+} from 'victory-native';
 
 import styles from '../../styles';
 
@@ -41,7 +46,8 @@ export default class UserChart extends Component<{}> {
 
     return (
       <View style={styles.chartStyle}>
-        <VictoryChart polar>
+        <VictoryChart horizontal theme={VictoryTheme.material}>
+          <VictoryAxis domain={{ x: [0, 3], y: [0, 100] }} />
           <VictoryBar
             style={{ data: { fill: 'tomato', opacity: 0.5 } }}
             size={9}

@@ -92,7 +92,7 @@ class UpdateProfile extends Component<{}> {
         .then(() => {
           const { navigate } = this.props.navigation;
 
-          Alert.alert('Stats Updated');
+          Alert.alert('Stats Updated', 'Check out the progress tab!');
           navigate('/Dashboard');
         });
     }
@@ -108,23 +108,39 @@ class UpdateProfile extends Component<{}> {
         <TextInput
           onChangeText={value => this.setState({ weight: value })}
           placeholder="Weight (lbs)"
+          onSubmitEditing={event => {
+            this.refs.bench.focus();
+          }}
         />
         <Text>What are your current one rep maxes?</Text>
         <TextInput
           onChangeText={value => this.setState({ benchORM: value })}
           placeholder="Bench Press (lbs)"
+          ref="bench"
+          onSubmitEditing={event => {
+            this.refs.ohp.focus();
+          }}
         />
         <TextInput
           onChangeText={value => this.setState({ overheadPressORM: value })}
           placeholder="Overhead Press (lbs)"
+          ref="ohp"
+          onSubmitEditing={event => {
+            this.refs.squat.focus();
+          }}
         />
         <TextInput
           onChangeText={value => this.setState({ squatORM: value })}
           placeholder="Squats (lbs)"
+          ref="squat"
+          onSubmitEditing={event => {
+            this.refs.deadlift.focus();
+          }}
         />
         <TextInput
           onChangeText={value => this.setState({ deadliftORM: value })}
           placeholder="Deadlift (lbs)"
+          ref="deadlift"
         />
         <View style={{ marginTop: '5%' }}>
           <Button

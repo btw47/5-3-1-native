@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from '../../styles';
 
-import Lift from './Lift';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
+import Lift from './Lift';
 
 class LiftByLift extends Component<{}> {
   constructor() {
@@ -103,11 +103,11 @@ class LiftByLift extends Component<{}> {
   };
 
   render() {
-    console.log('LIFT BY LIFT STATE', this.state);
-    console.log('LIFT BY LIFT PROPS', this.props);
     return (
       <View style={{ flex: 1 }}>
         <Lift
+          percent={this.props.state.liftByLift.completed}
+          liftByLift={this.props.liftByLift}
           liftIndex={this.state.liftIndex}
           templates={this.props.state.user.templates}
         />

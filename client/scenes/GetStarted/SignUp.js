@@ -34,7 +34,7 @@ export default class SignUp extends Component<{}> {
             if (error.code === 'auth/invalid-email') {
               Alert.alert('Error', 'Please enter a valid email address');
             }
-            this.setState({ error });
+            Alert.alert('Error', error.code);
           });
       } else {
         Alert.alert('Passwords do not match', 'Please re-enter your password');
