@@ -103,11 +103,11 @@ class LiftByLift extends Component<{}> {
   };
 
   render() {
-    console.log('LIFT BY LIFT STATE', this.state);
-    console.log('LIFT BY LIFT PROPS', this.props);
     return (
       <View style={{ flex: 1 }}>
         <Lift
+          completed={this.props.state.liftByLift.completed}
+          liftByLift={this.props.liftByLift}
           liftIndex={this.state.liftIndex}
           templates={this.props.state.user.templates}
         />

@@ -34,7 +34,10 @@ class UserStats extends Component<{}> {
           <View>
             <Text style={styles.userStats}>Name: {user.fullName}</Text>
             <Text style={styles.userStats}>Weight: {user.weight}</Text>
-            <Text style={styles.userStats}>ONE REP MAXES</Text>
+            <Text
+              style={{ fontSize: 30, marginBottom: '5%', marginTop: '10%' }}>
+              One Rep Maxes
+            </Text>
             <Text style={styles.userStats}>Bench: {user.ormBench}</Text>
             <Text style={styles.userStats}>
               Overhead Press: {user.ormOverheadPress}

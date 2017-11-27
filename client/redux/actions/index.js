@@ -280,3 +280,15 @@ export const fetchProfileImage = uid => {
     });
   };
 };
+
+//-----LIFT BY LIFT-----
+export const liftByLift = completed => {
+  return dispatch => {
+    completed = parseInt(completed) + 1;
+
+    dispatch({
+      type: actionTypes.LIFT_BY_LIFT,
+      payload: completed
+    });
+  };
+};

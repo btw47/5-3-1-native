@@ -11,6 +11,13 @@ import {
 import styles from '../../styles';
 
 export default class Lift extends Component<{}> {
+  constructor() {
+    super();
+    this.state = {
+      completed: []
+    };
+  }
+
   renderTitle = () => {
     const lifts = ['Bench', 'Overhead Press', 'Squat', 'Deadlift'];
     return (
@@ -20,12 +27,19 @@ export default class Lift extends Component<{}> {
     );
   };
 
+  handleComplete = event => {
+    console.log('HANDLE COMPLETE', this.A.value);
+  };
+
   render() {
+    const { completed } = this.props;
     console.log('LIFT PROPS', this.props);
+    console.log('LIFT STATE', this.state);
+    console.log('TEST', this.A.value);
     return (
       <Card>
         <CardContent>
-          <View style={styles.title}>{this.renderTitle()}</View>
+          <View>{this.renderTitle()}</View>
           <View
             style={{
               flex: 1,
@@ -44,7 +58,13 @@ export default class Lift extends Component<{}> {
               }}
             />
           </View>
-          <View style={{ marginLeft: '5%', width: '100%', height: '20%' }}>
+          <View
+            style={{
+              marginLeft: '5%',
+              width: '100%',
+              height: '20%',
+              marginBottom: '10%'
+            }}>
             {this.props.templates &&
               this.props.liftIndex === 0 &&
               this.props.templates.benchTemplate[0].map(a => (
