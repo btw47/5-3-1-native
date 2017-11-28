@@ -24,9 +24,7 @@ class SetProfile extends Component<{}> {
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        this.props.navigation.navigate('SignUp');
-      } else if (user) {
+      if (user) {
         this.props.loggedIn();
       }
     });
