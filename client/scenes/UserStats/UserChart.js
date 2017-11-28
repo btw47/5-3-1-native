@@ -43,8 +43,6 @@ export default class UserChart extends Component<{}> {
   }
 
   render() {
-    console.log('RENDER CHART', this.state.renderChart);
-
     return (
       <View style={styles.chartStyle}>
         <VictoryChart horizontal theme={VictoryTheme.material}>

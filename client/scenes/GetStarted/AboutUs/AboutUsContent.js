@@ -41,7 +41,6 @@ export default class AboutUsContent extends Component<{}> {
         </Text>
 
         {names.map(a => {
-          console.log('A', a);
           const i = names.indexOf(a);
           return (
             <View style={{ height: '50%', flex: 1 }} key={a}>

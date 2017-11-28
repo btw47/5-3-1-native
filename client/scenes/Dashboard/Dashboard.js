@@ -17,7 +17,7 @@ class Dashboard extends Component<{}> {
   }
 
   componentWillMount() {
-    // const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
 
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
@@ -34,9 +34,7 @@ class Dashboard extends Component<{}> {
             uploadList.push(prop);
           }
 
-          if (uploadList.length === 0) {
-            console.log('NO USER INFO YET');
-          } else {
+          if (uploadList.length != 0) {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);

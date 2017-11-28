@@ -123,13 +123,11 @@ class SetProfile extends Component<{}> {
         oneRepMax
       };
 
-      console.log('FIREBASE PUSH', firebasePush);
-
       firebaseDb
         .ref('users/' + uid + '/user')
         .push(firebasePush)
         .then(() => this.props.navigation.navigate('GoalsUpdate'))
-        .catch(error => console.log(error));
+        .catch(error => this.setState({ error }));
     }
   };
 
@@ -144,7 +142,6 @@ class SetProfile extends Component<{}> {
     });
   };
   render() {
-    console.log('SET PROFILE STATE', this.state);
     return (
       <ScrollView style={{ marginHorizontal: '2%' }}>
         <View>

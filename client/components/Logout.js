@@ -4,8 +4,6 @@ import firebase from 'firebase';
 
 const Logout = props => {
   const handleLogout = () => {
-    console.log('LOGOUT');
-
     firebase
       .auth()
       .signOut()
