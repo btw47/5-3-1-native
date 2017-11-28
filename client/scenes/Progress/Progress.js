@@ -85,40 +85,85 @@ class Progress extends Component<{}> {
     return progressList;
   };
 
-  render() {
-    return (
-      <View style={{ marginTop: '5%' }}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.showModal}
-          onRequestClose={() => this.setState({ showModal: false })}>
-          {this.props.state.user && (
-            <DetailedProgress progress={this.renderProgress()} />
-          )}
-        </Modal>
-        <View>
-          <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
-          <VictoryChart>
-            {this.state.renderedWeight && (
-              <VictoryArea
-                interpolation="natural"
-                style={{
-                  data: { fill: '#ed8c42' }
-                }}
-                data={this.state.renderedWeight}
-              />
+  renderPage = () => {
+    if (this.props.state.user.progress.length > 1) {
+      return (
+        <View style={{ marginTop: '5%' }}>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.showModal}
+            onRequestClose={() => this.setState({ showModal: false })}>
+            {this.props.state.user && (
+              <DetailedProgress progress={this.renderProgress()} />
             )}
-          </VictoryChart>
+          </Modal>
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
+            <VictoryChart>
+              {this.state.renderedWeight && (
+                <VictoryArea
+                  interpolation="natural"
+                  style={{
+                    data: { fill: '#ed8c42' }
+                  }}
+                  data={this.state.renderedWeight}
+                />
+              )}
+            </VictoryChart>
+          </View>
+          <Button
+            title="see more stats"
+            onPress={() => {
+              this.setState({ showModal: true });
+            }}
+          />
         </View>
-        <Button
-          title="see more stats"
-          onPress={() => {
-            this.setState({ showModal: true });
-          }}
-        />
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text style={{ fontSize: 20 }}>Please update your stats first</Text>
+        </View>
+      );
+    }
+  };
+
+  render() {
+    return <View>{this.renderPage()}</View>;
+    // return (
+    //   <View style={{ marginTop: '5%' }}>
+    //     <Modal
+    //       animationType="slide"
+    //       transparent={false}
+    //       visible={this.state.showModal}
+    //       onRequestClose={() => this.setState({ showModal: false })}>
+    //       {this.props.state.user && (
+    //         <DetailedProgress progress={this.renderProgress()} />
+    //       )}
+    //     </Modal>
+    //     <View>
+    //       <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
+    //       <VictoryChart>
+    //         {this.state.renderedWeight && (
+    //           <VictoryArea
+    //             interpolation="natural"
+    //             style={{
+    //               data: { fill: '#ed8c42' }
+    //             }}
+    //             data={this.state.renderedWeight}
+    //           />
+    //         )}
+    //       </VictoryChart>
+    //     </View>
+    //     <Button
+    //       title="see more stats"
+    //       onPress={() => {
+    //         this.setState({ showModal: true });
+    //       }}
+    //     />
+    //   </View>
+    // );
   }
 }
 
