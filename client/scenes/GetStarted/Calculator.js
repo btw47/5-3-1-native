@@ -47,7 +47,6 @@ class Calculator extends Component<{}> {
     ) {
       Alert.alert('All input fields must be filled out');
     } else {
-      console.log('SUBMITTED');
       // const calculatedBench = this.oneRepMax(
       //   parseInt(this.state.BenchWeight.value),
       //   parseInt(this.state.BenchReps.value)
@@ -83,7 +82,6 @@ class Calculator extends Component<{}> {
   };
 
   render() {
-    console.log('THIS STATE', this.state);
     return (
       <View>
         <Modal

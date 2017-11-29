@@ -41,15 +41,14 @@ export default class UserChart extends Component<{}> {
 
     this.setState({ renderChart });
   }
-  render() {
-    console.log('RENDER CHART', this.state.renderChart);
 
+  render() {
     return (
       <View style={styles.chartStyle}>
         <VictoryChart horizontal theme={VictoryTheme.material}>
           <VictoryAxis domain={{ x: [0, 3], y: [0, 100] }} />
           <VictoryBar
-            style={{ data: { fill: 'tomato', opacity: 0.5 } }}
+            style={{ data: { fill: 'tomato', opacity: 0.8 } }}
             size={9}
             data={this.state.renderChart}
           />

@@ -3,7 +3,6 @@ import { firebaseApp, firebaseDb } from '../../../server/firebase';
 
 //-----USER AUTH-----
 export const loggedIn = () => {
-  console.log('LOGGED IN ACTION');
   return {
     type: actionTypes.LOGGED_IN
   };
@@ -11,8 +10,6 @@ export const loggedIn = () => {
 
 //-----FETCH USER INFO-----
 export function fetchUser(thisUser) {
-  console.log('FETCH USER ACTION');
-
   return dispatch => {
     if (thisUser != null) {
       var uid = thisUser.uid;

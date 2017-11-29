@@ -38,9 +38,7 @@ class UpdateProfile extends Component<{}> {
             uploadList.push(prop);
           }
 
-          if (uploadList.length === 0) {
-            console.log('NO USER INFO YET');
-          } else {
+          if (uploadList.length != 0) {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchUser(thisUser);
             // this.props.fetchOldStats(thisUser);
@@ -59,7 +57,6 @@ class UpdateProfile extends Component<{}> {
   handleSubmit = () => {
     const date = Date();
     const fullName = this.props.state.user.fullName;
-    console.log('HANDLE SUBMIT FULL NAME', fullName);
 
     const oneRepMax = {
       squatORM: this.state.squatORM,
@@ -75,9 +72,7 @@ class UpdateProfile extends Component<{}> {
       date
     };
 
-    if (!this.state.weight || !userStats) {
-      console.log('NOT FILLED OUT YO');
-    } else {
+    if (this.state.weight && userStats) {
       const thisUser = firebase.auth().currentUser;
       if (thisUser != null) {
         var uid = thisUser.uid;
@@ -86,9 +81,6 @@ class UpdateProfile extends Component<{}> {
       firebaseDb
         .ref('users/' + uid + '/user/')
         .push(userStats)
-        .then(() => {
-          console.log('Stats Updated');
-        })
         .then(() => {
           const { navigate } = this.props.navigation;
 
@@ -108,6 +100,7 @@ class UpdateProfile extends Component<{}> {
         <TextInput
           onChangeText={value => this.setState({ weight: value })}
           placeholder="Weight (lbs)"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.bench.focus();
           }}
@@ -117,6 +110,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ benchORM: value })}
           placeholder="Bench Press (lbs)"
           ref="bench"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.ohp.focus();
           }}
@@ -125,6 +119,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ overheadPressORM: value })}
           placeholder="Overhead Press (lbs)"
           ref="ohp"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.squat.focus();
           }}
@@ -133,6 +128,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ squatORM: value })}
           placeholder="Squats (lbs)"
           ref="squat"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.deadlift.focus();
           }}
@@ -140,6 +136,7 @@ class UpdateProfile extends Component<{}> {
         <TextInput
           onChangeText={value => this.setState({ deadliftORM: value })}
           placeholder="Deadlift (lbs)"
+          keyboardType="numeric"
           ref="deadlift"
         />
         <View style={{ marginTop: '5%' }}>
