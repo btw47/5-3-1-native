@@ -30,15 +30,12 @@ export default class Lift extends Component<{}> {
   };
 
   handleCompleted = event => {
-    console.log('EX', event);
-
     let newCompleted = this.state.completed;
 
     if (event.checked) {
       newCompleted.push(event.label);
     } else {
       newCompleted = newCompleted.filter(a => {
-        console.log('A', a);
         return a != event.label;
       });
     }
@@ -52,8 +49,6 @@ export default class Lift extends Component<{}> {
 
   render() {
     const { completed } = this.props;
-    console.log('LIFT PROPS', this.props);
-    console.log('LIFT STATE', this.state);
     return (
       <Card>
         <CardContent>

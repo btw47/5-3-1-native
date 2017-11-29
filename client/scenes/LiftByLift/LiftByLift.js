@@ -36,9 +36,7 @@ class LiftByLift extends Component<{}> {
             uploadList.push(prop);
           }
 
-          if (uploadList.length === 0) {
-            console.log('NO USER INFO YET');
-          } else {
+          if (uploadList.length != 0) {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);

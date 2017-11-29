@@ -55,9 +55,7 @@ class GoalsUpdate extends React.Component {
             uploadList.push(prop);
           }
 
-          if (uploadList.length === 0) {
-            console.log('NO USER INFO YET');
-          } else {
+          if (uploadList.length != 0) {
             // this.props.fetchCalendar(thisUser);
             this.props.fetchUser(thisUser);
             // this.props.fetchOldStats(thisUser);
@@ -259,7 +257,6 @@ class GoalsUpdate extends React.Component {
   };
 
   handleSubmit = () => {
-    console.log('GOALS UPDATE CALLED');
     if (
       !this.state.selectedDay ||
       !this.state.selectedWeekday ||
@@ -317,8 +314,6 @@ class GoalsUpdate extends React.Component {
         date: date
       };
 
-      console.log('GOALS UPDATE PUSH', firebasePush);
-
       firebaseDb
         .ref('users/' + uid + '/calendar/')
         .push(firebasePush)
@@ -332,8 +327,6 @@ class GoalsUpdate extends React.Component {
   };
 
   render() {
-    console.log('UPDATE GOALS STATE', this.state);
-    console.log('UPDATE GOALS PROPS', this.props);
     return (
       <ScrollView style={styles.container}>
         {this.renderSegmentControlClone()}

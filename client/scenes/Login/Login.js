@@ -34,9 +34,6 @@ export default class Login extends Component<{}> {
     firebaseApp
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('logged in');
-      })
       .catch(error => {
         Alert.alert(error);
         this.setState({ error });
@@ -75,8 +72,6 @@ export default class Login extends Component<{}> {
   };
 
   render() {
-    console.log('FIREBASE AUTH', firebase.auth().currentUser);
-    console.log('LOGIN STATE', this.state);
     return (
       <View style={{ marginHorizontal: '5%', marginTop: '10%' }}>
         <Text

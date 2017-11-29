@@ -14,8 +14,6 @@ class Progress extends Component<{}> {
   state = { showModal: false };
 
   componentWillMount() {
-    // const { navigate } = this.props.navigation;
-
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         navigate('Login');
@@ -31,10 +29,7 @@ class Progress extends Component<{}> {
             uploadList.push(prop);
           }
 
-          if (uploadList.length === 0) {
-            console.log('NO USER INFO YET');
-          } else {
-            // this.props.fetchCalendar(thisUser);
+          if (uploadList.length != 0) {
             this.props.fetchProfileImage(thisUser.uid);
             this.props.fetchUser(thisUser);
             this.props.fetchTodaysWorkout(thisUser.uid);
@@ -81,44 +76,58 @@ class Progress extends Component<{}> {
         progressList.push(a);
       });
     }
-    console.log('PROGRESS LIST', progressList);
     return progressList;
   };
 
-  render() {
-    return (
-      <View style={{ marginTop: '5%' }}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.showModal}
-          onRequestClose={() => this.setState({ showModal: false })}>
-          {this.props.state.user && (
-            <DetailedProgress progress={this.renderProgress()} />
-          )}
-        </Modal>
-        <View>
-          <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
-          <VictoryChart>
-            {this.state.renderedWeight && (
-              <VictoryArea
-                interpolation="natural"
-                style={{
-                  data: { fill: '#ed8c42' }
-                }}
-                data={this.state.renderedWeight}
+  renderPage = () => {
+    if (this.props.state.user.progress.length > 1) {
+      return (
+        <View style={{ marginTop: '5%' }}>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.showModal}
+            onRequestClose={() => this.setState({ showModal: false })}>
+            {this.props.state.user && (
+              <DetailedProgress
+                progress={this.renderProgress()}
+                navigation={this.props.navigation}
               />
             )}
-          </VictoryChart>
+          </Modal>
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 28 }}>Weight</Text>
+            <VictoryChart>
+              {this.state.renderedWeight && (
+                <VictoryArea
+                  interpolation="natural"
+                  style={{
+                    data: { fill: '#ed8c42' }
+                  }}
+                  data={this.state.renderedWeight}
+                />
+              )}
+            </VictoryChart>
+          </View>
+          <Button
+            title="see more stats"
+            onPress={() => {
+              this.setState({ showModal: true });
+            }}
+          />
         </View>
-        <Button
-          title="see more stats"
-          onPress={() => {
-            this.setState({ showModal: true });
-          }}
-        />
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text style={{ fontSize: 20 }}>Please update your stats first</Text>
+        </View>
+      );
+    }
+  };
+
+  render() {
+    return <View>{this.renderPage()}</View>;
   }
 }
 
