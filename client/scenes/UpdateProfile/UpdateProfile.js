@@ -100,6 +100,7 @@ class UpdateProfile extends Component<{}> {
         <TextInput
           onChangeText={value => this.setState({ weight: value })}
           placeholder="Weight (lbs)"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.bench.focus();
           }}
@@ -109,6 +110,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ benchORM: value })}
           placeholder="Bench Press (lbs)"
           ref="bench"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.ohp.focus();
           }}
@@ -117,6 +119,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ overheadPressORM: value })}
           placeholder="Overhead Press (lbs)"
           ref="ohp"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.squat.focus();
           }}
@@ -125,6 +128,7 @@ class UpdateProfile extends Component<{}> {
           onChangeText={value => this.setState({ squatORM: value })}
           placeholder="Squats (lbs)"
           ref="squat"
+          keyboardType="numeric"
           onSubmitEditing={event => {
             this.refs.deadlift.focus();
           }}
@@ -132,6 +136,7 @@ class UpdateProfile extends Component<{}> {
         <TextInput
           onChangeText={value => this.setState({ deadliftORM: value })}
           placeholder="Deadlift (lbs)"
+          keyboardType="numeric"
           ref="deadlift"
         />
         <View style={{ marginTop: '5%' }}>

@@ -9,6 +9,7 @@ import {
 } from 'victory-native';
 
 import styles from '../../styles';
+import Logout from '../../components/Logout';
 
 export default class DetailedProgress extends Component<{}> {
   constructor() {
@@ -131,6 +132,7 @@ export default class DetailedProgress extends Component<{}> {
             )}
           </VictoryChart>
         </View>
+        <Logout navigation={this.props.navigation} />
       </ScrollView>
     );
   }

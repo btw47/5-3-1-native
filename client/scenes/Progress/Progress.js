@@ -89,7 +89,10 @@ class Progress extends Component<{}> {
             visible={this.state.showModal}
             onRequestClose={() => this.setState({ showModal: false })}>
             {this.props.state.user && (
-              <DetailedProgress progress={this.renderProgress()} />
+              <DetailedProgress
+                progress={this.renderProgress()}
+                navigation={this.props.navigation}
+              />
             )}
           </Modal>
           <View>
