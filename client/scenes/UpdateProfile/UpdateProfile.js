@@ -140,11 +140,7 @@ class UpdateProfile extends Component<{}> {
           ref="deadlift"
         />
         <View style={{ marginTop: '5%' }}>
-          <Button
-            onPress={() => this.handleSubmit()}
-            title="Update Stats"
-            color="#787881"
-          />
+          <Button onPress={() => this.handleSubmit()} title="Update Stats" />
         </View>
       </View>
     );

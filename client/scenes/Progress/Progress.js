@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DetailedProgress from './DetailedProgress';
+import Logout from '../../components/Logout';
 import { firebaseDb } from '../../../server/firebase';
 import * as actions from '../../redux/actions';
 import styles from '../../styles';
@@ -53,7 +54,7 @@ class Progress extends Component<{}> {
         const lift = {};
         const obj = {};
         // obj['x'] = count;
-        // obj['x'] = a['name'];
+        // obj['x'] = a['name'] + count;
         obj['x'] = count;
         obj['y'] = parseInt(a[exercises[i]]);
         count += 1;
@@ -114,6 +115,7 @@ class Progress extends Component<{}> {
             onPress={() => {
               this.setState({ showModal: true });
             }}
+            style={{ margin: '5%' }}
           />
         </View>
       );
