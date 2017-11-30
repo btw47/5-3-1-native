@@ -5,11 +5,15 @@ import styles from '../../styles';
 
 export default class DashboardHeader extends Component<{}> {
   renderImage = () => {
-    const image = this.props.profileImage
-      ? this.props.profileImage
-      : require('../../images/anon-user.jpg');
+    // const image = this.props.profileImage
+    //   ? this.props.profileImage
+    //   : require('../../images/anon-user.jpg');
     return (
-      <Image source={image} style={styles.profileImage} resizeMode="contain" />
+      <Image
+        source={require('../../images/anon-user.jpg')}
+        style={styles.profileImage}
+        resizeMode="contain"
+      />
     );
   };
 
@@ -21,7 +25,7 @@ export default class DashboardHeader extends Component<{}> {
         <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
         <View>
           <Text style={styles.dashboardTitle}>{user.fullName}</Text>
-          <Text>{user.desc}</Text>
+          <Text style={{ paddingLeft: '10%' }}>{user.desc}</Text>
         </View>
       </View>
     );

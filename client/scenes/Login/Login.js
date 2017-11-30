@@ -100,7 +100,7 @@ export default class Login extends Component<{}> {
               }
             }}
             title="Log In"
-            color="#787881"
+            color="#f49842"
           />
         </View>
 
