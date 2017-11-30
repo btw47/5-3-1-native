@@ -21,7 +21,7 @@ export default class DashboardHeader extends Component<{}> {
         <View style={{ width: 65, height: 65 }}>{this.renderImage()}</View>
         <View>
           <Text style={styles.dashboardTitle}>{user.fullName}</Text>
-          <Text>{user.desc}</Text>
+          <Text style={{ paddingLeft: '10%' }}>{user.desc}</Text>
         </View>
       </View>
     );
